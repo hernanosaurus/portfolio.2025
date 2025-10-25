@@ -17,7 +17,7 @@ export default function Projects({ projects }: ProjectsProps) {
     <section>
       {linkedProjects.length > 0 && (
         <div className="grid gap-8 mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-orange-900 dark:text-orange-400">
+          <h2 className="text-2xl font-semibold mb-6 text-orange-700 dark:text-orange-400">
             Featured Projects
           </h2>
           {linkedProjects.map((project) => (

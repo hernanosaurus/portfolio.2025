@@ -6,7 +6,7 @@ import Skills from './components/sections/Skills';
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-sans text-zinc-900 dark:text-zinc-100 bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-300 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
+    <div className="min-h-screen font-sans text-zinc-900 dark:text-zinc-100 bg-gradient-to-br from-white via-orange-50 to-orange-100 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only absolute top-2 left-2 bg-orange-800 text-white px-3 py-1 rounded z-50"
