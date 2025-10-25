@@ -9,7 +9,7 @@ interface CardProps {
 export default function Card({ project }: CardProps) {
   return (
     <article
-      className="rounded-lg border border-orange-200 dark:border-zinc-800 bg-white dark:from-zinc-900 dark:to-zinc-800 p-6 shadow-sm transition-all duration-200 hover:scale-[1.025] hover:shadow-lg hover:border-orange-500 dark:hover:border-orange-400"
+      className="rounded-lg border border-orange-200 dark:border-zinc-800 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 p-6 shadow-sm transition-all duration-200 hover:scale-[1.025] hover:shadow-lg hover:border-orange-500 dark:hover:border-orange-400"
       aria-label={`Project: ${project.name}`}
     >
       <h3 className="text-xl font-bold mb-2">
