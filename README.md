@@ -11,6 +11,7 @@ This portfolio is a single-page app that tells my story as a developer. It's bui
 - **Next.js 16** - React framework with App Router
 - **TypeScript** - For that sweet type safety
 - **Tailwind CSS v4** - Utility-first styling (with dark mode!)
+- **Framer Motion** - Smooth animations and micro-interactions
 - **Lucide React** - Beautiful, consistent icons
 - **Geist Font** - Clean typography
 
@@ -96,10 +97,19 @@ Edit `app/layout.tsx`:
 
 ### 5. Tweak the Styles
 
-The color scheme uses orange as the primary brand color. To change it:
+The color scheme uses a warm orange gradient with white backgrounds. To change it:
 - Check out `tailwind.config.ts` for custom colors
 - Update component class names as needed
+- Main page uses `from-white to-orange-50` gradient
 - Dark mode works out of the box!
+
+### 6. Customize Animations
+
+Framer Motion animations add personality throughout:
+- **Hero section** - Fade-in animations with wiggling coffee & laptop emojis
+- **Project cards** - Staggered fade-in on scroll with spring hover effect
+- **Footer** - Playful animated emojis (coffee, shaka, music notes)
+- Adjust timing/stiffness in component files to match your style
 
 ## Available Scripts
 
@@ -130,9 +140,10 @@ npm run lint
 
 This portfolio follows these principles:
 
-- **Clean & Minimal** - Let the work speak for itself
+- **Clean & Minimal** - Let the work speak for itself with subtle orange accents
 - **Fast & Performant** - Optimized builds, static generation
-- **Accessible** - Usable by everyone
+- **Smooth Animations** - Framer Motion for delightful micro-interactions
+- **Accessible** - Usable by everyone with proper ARIA labels
 - **Responsive** - Looks great on any device
 - **Dark Mode** - Easy on the eyes
 
@@ -179,6 +190,8 @@ Free to use as a template for your own portfolio. Just make it your own!
 
 ---
 
-Built with Next.js, Tailwind, and loose TypeScript 😉 — Designed and coded with good coffee ☕, good vibes 🤙, and good music 🎶.
+Built with Next.js, Tailwind, Framer Motion, and loose TypeScript 😉 — Designed and coded with good coffee ☕, good vibes 🤙, and good music 🎶.
+
+_(Dabbled with Framer Motion — just exploring the basics and having fun with simple motion effects.)_
 
 **Available for remote work!** Let's connect 🚀

@@ -1,17 +1,52 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Hero() {
   return (
     <section className="flex flex-col items-start gap-6 text-left max-w-full">
-      <div className="flex flex-col gap-1">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.6 }}
+        variants={fadeInUp}
+        className="flex flex-col gap-1"
+      >
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
           Nani
         </h1>
         <h2 className="text-lg font-mono text-zinc-800 dark:text-zinc-200 mb-2">
-          Creative / Frontend Developer. ☕ → 💻
+          Creative / Frontend Developer.{' '}
+          <motion.span
+            animate={{ rotate: [0, -10, 10, -10, 0] }}
+            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+            className="inline-block"
+          >
+            ☕
+          </motion.span>{' '}
+          →{' '}
+          <motion.span
+            animate={{ y: [0, -2, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            className="inline-block"
+          >
+            💻
+          </motion.span>
         </h2>
-      </div>
-      <p className="w-full max-w-full text-lg leading-relaxed text-zinc-800 dark:text-zinc-200">
+      </motion.div>
+      <motion.p
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.6, delay: 0.2 }}
+        variants={fadeInUp}
+        className="w-full max-w-full text-lg leading-relaxed text-zinc-800 dark:text-zinc-200"
+      >
         I love building sleek, responsive, and user-friendly web experiences. I work remotely,
         powered by coffee, good music, and my comfy desk setup. When I&apos;m not coding, you&apos;ll
         probably find me watching movies or exploring design ideas just for fun.
@@ -22,8 +57,14 @@ export default function Hero() {
           keyboard for hire
         </span>
         &nbsp; — ready to bring ideas to life, one line of code at a time.
-      </p>
-      <div className="flex flex-row gap-4 mt-2">
+      </motion.p>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.6, delay: 0.4 }}
+        variants={fadeInUp}
+        className="flex flex-row gap-4 mt-2"
+      >
         <a
           href="https://github.com/hernanosaurus"
           target="_blank"
@@ -46,7 +87,7 @@ export default function Hero() {
         <a href="/resume.pdf" download aria-label="Download Nani's resume">
           <FileText className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

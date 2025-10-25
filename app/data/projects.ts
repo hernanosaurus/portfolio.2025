@@ -71,7 +71,7 @@ export const projects: Project[] = [
         link: 'https://madgicx.com/ad-library',
       },
       {
-        name: 'AI-Ads (formerly ‘AI-Copywriter’ / ‘AI-Ad Generator’)',
+        name: 'AI-Ads (formerly ‘AI-Copywriter’)',
         description:
           'An end-to-end creative generation workflow: start with a text prompt, upload an image or select an example creative from the library, then the AI generates variants of ad creatives (images/videos), which can be edited and launched directly. Dramatically speeds up creative output, supports A/B testing, and integrates with ad deployment.',
         link: 'https://madgicx.com/ai-ads',
