@@ -1,0 +1,52 @@
+import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+
+export default function Hero() {
+  return (
+    <section className="flex flex-col items-start gap-6 text-left max-w-full">
+      <div className="flex flex-col gap-1">
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+          Nani
+        </h1>
+        <h2 className="text-lg font-mono text-zinc-800 dark:text-zinc-200 mb-2">
+          Creative / Frontend Developer. ☕ → 💻
+        </h2>
+      </div>
+      <p className="w-full max-w-full text-lg leading-relaxed text-zinc-800 dark:text-zinc-200">
+        I love building sleek, responsive, and user-friendly web experiences. I work remotely,
+        powered by coffee, good music, and my comfy desk setup. When I&apos;m not coding, you&apos;ll
+        probably find me watching movies or exploring design ideas just for fun.
+        <br />
+        <br />
+        I&apos;m a&nbsp;
+        <span className="font-bold text-orange-700 dark:text-orange-400">
+          keyboard for hire
+        </span>
+        &nbsp; — ready to bring ideas to life, one line of code at a time.
+      </p>
+      <div className="flex flex-row gap-4 mt-2">
+        <a
+          href="https://github.com/hernanosaurus"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Nani's GitHub profile"
+        >
+          <Github className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/hernan-terania/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Nani's LinkedIn profile"
+        >
+          <Linkedin className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
+        </a>
+        <a href="mailto:hterania.dev@gmail.com" aria-label="Send email to Nani">
+          <Mail className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
+        </a>
+        <a href="/resume.pdf" download aria-label="Download Nani's resume">
+          <FileText className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
+        </a>
+      </div>
+    </section>
+  );
+}
