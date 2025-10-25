@@ -21,7 +21,7 @@ export default function Home() {
           Let&apos;s connect &mdash; Available for remote work!
         </footer>
         <div className="mt-4 text-center text-xs text-zinc-700 dark:text-zinc-300">
-          Built with Next.js, Tailwind, and loose TypeScript 😉 — deployed on GitHub. Designed and
+          Built with Next.js, Tailwind, and loose TypeScript 😉 — deployed on Vercel. Designed and
           coded with good coffee ☕, good vibes 🤙, and good music 🎶.
         </div>
       </main>
