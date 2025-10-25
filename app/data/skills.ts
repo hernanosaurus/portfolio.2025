@@ -3,7 +3,7 @@ export interface Skills {
 }
 
 export const skills: Skills = {
-  Coding: ['HTML5', 'JavaScript (ES6+)', 'CSS3', 'SCSS / SASS / LESS', 'TypeScript'],
+  Coding: ['HTML5', 'JavaScript (ES6+)', 'CSS3', 'SCSS / SASS', 'TypeScript'],
   'Libraries & Frameworks': [
     'jQuery',
     'React',

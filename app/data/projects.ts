@@ -29,25 +29,25 @@ export const projects: Project[] = [
         name: 'Football Fan-site',
         description:
           'Independent fan-site delivering news, rumours, opinions and analysis. Led frontend development using SCSS and Bootstrap, translating Figma designs into a polished website. Integrated CMS for dynamic content rendering and optimized for performance.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS / LESS', 'CSS3', 'Bootstrap', 'Laravel'],
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
       },
       {
         name: 'Football Fan Engagement Platform',
         description:
           'Led frontend development for a football fan engagement platform centered around the Dutch national team — focusing on responsive UI, performance, and smooth user interactions for live content and community features.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS / LESS', 'CSS3', 'Bootstrap', 'Laravel'],
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
       },
       {
         name: 'Sports News Platform',
         description:
           'Built and maintained a high-traffic football news portal, delivering live match updates, player injuries, results and commentary for fans.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS / LESS', 'CSS3', 'Laravel'],
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Laravel'],
       },
       {
         name: 'Football Insights Portal',
         description:
           'Developed and enhanced a football insights-analytics platform, providing real-time valuation models, transfer rumours, and interactive player–market dashboards for a global audience.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS / LESS', 'CSS3', 'Bootstrap', 'Laravel'],
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
       },
       {
         name: 'Real-time Embeddable Content Feed',
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     name: 'Madgicx',
     description:
       'An AI-powered advertising platform focused on helping brands and agencies optimize and scale their campaigns across platforms like Meta Platforms (Facebook & Instagram).',
-    tech: ['React', 'Redux', 'TypeScript', 'SCSS / SASS / LESS', 'Material UI'],
+    tech: ['React', 'Redux', 'TypeScript', 'SCSS / SASS', 'Material UI'],
     link: 'https://madgicx.com/',
     products: [
       {
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     name: 'Creator & Fan Engagement Platform',
     description:
       'A platform that enables creators and entertainment brands to deepen fan engagement by providing AI-driven personalized interaction experiences, content, and operations support.',
-    tech: ['Ember.js', 'Parse', 'SCSS / SASS / LESS'],
+    tech: ['Ember.js', 'Parse', 'SCSS / SASS'],
   },
   {
     name: 'Web3 Digital Asset Minting Platform',

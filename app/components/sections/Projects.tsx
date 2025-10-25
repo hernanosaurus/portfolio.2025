@@ -40,7 +40,7 @@ export default function Projects({ projects }: ProjectsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-semibold mb-6 text-orange-700 dark:text-orange-400"
+            className="text-2xl font-semibold mb-6 text-orange-400"
           >
             Featured Projects
           </motion.h2>
@@ -66,7 +66,7 @@ export default function Projects({ projects }: ProjectsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-semibold mb-6 text-zinc-900 dark:text-zinc-100"
+            className="text-2xl font-semibold mb-6 text-zinc-100"
           >
             Other Projects
           </motion.h2>

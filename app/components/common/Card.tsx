@@ -20,39 +20,39 @@ export default function Card({ project }: CardProps) {
         damping: 600,
         mass: 0.2
       }}
-      className="rounded-lg border border-orange-200 dark:border-zinc-800 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 p-6 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-orange-500 dark:hover:border-orange-400"
+      className="rounded-lg border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-800 p-6 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-orange-400"
       aria-label={`Project: ${project.name}`}
     >
-      <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+      <h3 className="text-xl font-bold mb-2 flex items-center gap-1.5">
         {project.link ? (
           <Link href={project.link} ariaLabel={`Visit ${project.name} project`}>
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1 align-middle text-orange-400">
               {project.name}
-              <ExternalLink className="w-4 h-4 inline-block" />
+              <ExternalLink className="w-4 h-4 hidden sm:inline-block align-middle" />
             </span>
           </Link>
         ) : (
-          project.name
+          <span className="text-orange-400">{project.name}</span>
         )}
       </h3>
-      <p className="mb-2 text-zinc-800 dark:text-zinc-300">{project.description}</p>
+      <p className="mb-2 text-zinc-300">{project.description}</p>
       {project.products && (
-        <div className="mb-2 pl-4 border-l border-orange-200 dark:border-zinc-700">
+        <div className="mb-2 pl-4 border-l border-zinc-700">
           {project.products.map((prod) => (
             <div key={prod.name} className="mb-4">
-              <h4 className="text-lg font-semibold flex items-center gap-2">
+              <h4 className="text-lg font-semibold flex items-center gap-1.5">
                 {prod.link ? (
-                  <Link href={prod.link} ariaLabel={`Visit ${prod.name}`}>
-                    <span className="flex items-center gap-1.5">
+                  <Link href={prod.link} ariaLabel={`Visit ${prod.name}`}> 
+                    <span className="flex items-center gap-1 align-middle text-orange-400">
                       {prod.name}
-                      <ExternalLink className="w-3.5 h-3.5 inline-block" />
+                      <ExternalLink className="w-3 h-3 hidden sm:inline-block align-middle" />
                     </span>
                   </Link>
                 ) : (
-                  prod.name
+                  <span className="text-zinc-100">{prod.name}</span>
                 )}
               </h4>
-              <p className="text-zinc-700 dark:text-zinc-400 text-sm mb-2">{prod.description}</p>
+              <p className="text-zinc-400 text-sm mb-2">{prod.description}</p>
               {prod.tech && (
                 <div className="mt-2 flex flex-wrap gap-2">
                   {prod.tech.map((tech) => (
