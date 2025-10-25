@@ -10,7 +10,7 @@ const fadeInUp = {
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-start gap-6 text-left max-w-full">
+    <section className="flex flex-col items-start gap-4 md:gap-6 text-left max-w-full">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -18,7 +18,7 @@ export default function Hero() {
         variants={fadeInUp}
         className="flex flex-col gap-1"
       >
-        <h1 className="text-3xl font-bold text-zinc-100 leading-tight">
+        <h1 className="text-2xl md:text-3xl font-bold text-zinc-100 leading-tight">
           Nani&nbsp;+&nbsp;
           <motion.span
             animate={{ rotate: [0, -10, 10, -10, 0] }}
@@ -35,9 +35,8 @@ export default function Hero() {
             💻
           </motion.span>
         </h1>
-        <h2 className="text-lg font-mono text-zinc-200 mb-2">
+        <h2 className="text-base md:text-lg font-mono text-zinc-200 mb-2">
           Creative / Frontend Developer.{' '}
-
         </h2>
       </motion.div>
       <motion.p
@@ -45,7 +44,7 @@ export default function Hero() {
         animate="visible"
         transition={{ duration: 0.6, delay: 0.2 }}
         variants={fadeInUp}
-        className="w-full max-w-full text-lg leading-relaxed text-zinc-200"
+        className="w-full max-w-full text-base md:text-lg leading-relaxed text-zinc-200"
       >
         I love building sleek, responsive, and user-friendly web experiences. I work remotely,
         powered by coffee, good music, and my comfy desk setup. When I&apos;m not coding, you&apos;ll
@@ -63,7 +62,7 @@ export default function Hero() {
         animate="visible"
         transition={{ duration: 0.6, delay: 0.4 }}
         variants={fadeInUp}
-        className="flex flex-row gap-4 mt-2"
+        className="flex flex-row gap-3 md:gap-4 mt-2"
       >
         <a
           href="https://github.com/hernanosaurus"

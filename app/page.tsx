@@ -16,7 +16,7 @@ export default function Home() {
       >
         Skip to content
       </a>
-      <main id="main-content" className="mx-auto max-w-3xl py-16 px-6 flex flex-col gap-16">
+      <main id="main-content" className="mx-auto w-full max-w-3xl py-10 md:py-16 px-4 md:px-6 flex flex-col gap-12 md:gap-16">
         <Hero />
         <Projects projects={projects} />
         <Skills skills={skills} />
@@ -25,7 +25,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 text-center text-sm text-zinc-700 dark:text-zinc-300"
+          className="mt-12 text-center text-sm text-zinc-400 max-w-xs sm:max-w-none mx-auto break-words leading-snug"
         >
           <motion.span
             animate={{ scale: [1, 1.1, 1] }}
@@ -41,11 +41,13 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 text-center text-xs text-zinc-700 dark:text-zinc-300"
+          className="mt-4 text-center text-xs text-zinc-500 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto break-words leading-snug"
         >
-          Built with Next.js, Tailwind, and loose TypeScript 😉 — deployed on Vercel.
-          <br />
-          Designed and coded with good coffee{' '}
+          Built with{' '}
+          <span className="font-bold text-zinc-200">Next.js</span>,{' '}
+          <span className="font-bold text-zinc-200">Tailwind</span>, and loose{' '}
+          <span className="font-bold text-zinc-200">TypeScript</span> 😉 — deployed on{' '}
+          <span className="font-bold text-zinc-200">Vercel</span>. Designed and coded with good coffee{' '}
           <motion.span
             animate={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
@@ -71,8 +73,8 @@ export default function Home() {
           </motion.span>
           .
           <br />
-          <span className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-2 block">
-            (Dabbled with Framer Motion — just exploring the basics and having fun with simple motion effects. 😄)
+          <span className="text-[10px] text-zinc-600 mt-2 block">
+            (Dabbled with <span className="font-bold text-zinc-200">Framer Motion</span> — just exploring the basics and having fun with simple motion effects. 😄)
           </span>
         </motion.div>
       </main>

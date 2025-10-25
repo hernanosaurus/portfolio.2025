@@ -18,7 +18,7 @@ export default function Skills({ skills }: SkillsProps) {
             <ul className="flex flex-row flex-wrap gap-2">
               {items.map((skill) => (
                 <li key={skill}>
-                  <Tag>{skill}</Tag>
+                  <Tag className="text-xs sm:text-sm px-1.5 py-1" >{skill}</Tag>
                 </li>
               ))}
             </ul>
