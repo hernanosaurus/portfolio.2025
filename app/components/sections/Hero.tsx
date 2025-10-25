@@ -19,18 +19,14 @@ export default function Hero() {
         className="flex flex-col gap-1"
       >
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
-          Nani
-        </h1>
-        <h2 className="text-lg font-mono text-zinc-800 dark:text-zinc-200 mb-2">
-          Creative / Frontend Developer.{' '}
+          Nani&nbsp;+&nbsp;
           <motion.span
             animate={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
             className="inline-block"
           >
             ☕
-          </motion.span>{' '}
-          →{' '}
+          </motion.span>&nbsp;=&nbsp;
           <motion.span
             animate={{ y: [0, -2, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
@@ -38,6 +34,10 @@ export default function Hero() {
           >
             💻
           </motion.span>
+        </h1>
+        <h2 className="text-lg font-mono text-zinc-800 dark:text-zinc-200 mb-2">
+          Creative / Frontend Developer.{' '}
+
         </h2>
       </motion.div>
       <motion.p
@@ -84,7 +84,7 @@ export default function Hero() {
         <a href="mailto:hterania.dev@gmail.com" aria-label="Send email to Nani">
           <Mail className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
         </a>
-        <a href="/resume.pdf" download aria-label="Download Nani's resume">
+        <a href="/hTerania.resume.2025.pdf" download aria-label="Download Nani's resume">
           <FileText className="w-6 h-6 text-zinc-800 dark:text-zinc-200 hover:text-orange-900 dark:hover:text-orange-200 transition-colors" />
         </a>
       </motion.div>
