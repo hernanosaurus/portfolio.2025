@@ -137,6 +137,6 @@ export const projects: Project[] = [
     name: 'Enterprise logistics & transportation platforms',
     description:
       'Contributed shipment tracking, dashboards, and workflow automation features. Built reusable and responsive frontend components for the app, ensuring seamless user experience across devices.',
-    tech: ['Angular', 'Bootstrap', 'TypeScript'],
+    tech: ['AngularJS', 'Bootstrap', 'TypeScript'],
   },
 ];
