@@ -50,6 +50,7 @@ app/
 ├── components/
 │   ├── common/          # Reusable UI components
 │   │   ├── Card.tsx     # Project card component
+│   │   ├── Flame.tsx    # Flame text animation component
 │   │   ├── Link.tsx     # External link wrapper
 │   │   └── Tag.tsx      # Skill/tech tag
 │   └── sections/        # Page sections
@@ -107,6 +108,7 @@ The color scheme uses a warm orange gradient with white backgrounds. To change i
 
 Framer Motion animations add personality throughout:
 - **Hero section** - Fade-in animations with wiggling coffee & laptop emojis
+- **Flame component** - Interactive flame animation effect on hover/tap with seeded randomness for consistency
 - **Project cards** - Staggered fade-in on scroll with spring hover effect
 - **Footer** - Playful animated emojis (coffee, shaka, music notes)
 - Adjust timing/stiffness in component files to match your style
