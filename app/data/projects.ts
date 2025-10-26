@@ -24,43 +24,43 @@ export const projects: Project[] = [
   {
     name: 'Publishing Company',
     description:
-      'A digital publishing company focused on sports and fan engagement. Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences for users.',
+      'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
     products: [
       {
         name: 'Football Player Transfer App',
         description:
-          'Real-time updates and deep data insights around player transfers, valuations, and rumours. Built interactive screens, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
-        tech: ['React Native', 'Expo', 'One Signal', 'TypeScript'],
+          'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for mobile responsiveness.',
+        tech: ['React Native', 'Expo', 'TypeScript'],
       },
       {
         name: 'Football Fan-site',
         description:
-          'Independent fan-site delivering news, rumours, opinions and analysis. Led frontend development using SCSS and Bootstrap, translating Figma designs into a polished website. Integrated CMS for dynamic content rendering and optimized for performance.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
+          'Led frontend development, translating Figma designs into a polished website. Integrated CMS for dynamic content and optimized for performance.',
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
       },
       {
         name: 'Football Fan Engagement Platform',
         description:
-          'Led frontend development for a football fan engagement platform centered around the Dutch national team — focusing on responsive UI, performance, and smooth user interactions for live content and community features.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
+          'Built responsive UI and smooth user interactions for live content and community features. Focused on performance and accessibility.',
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
       },
       {
         name: 'Sports News Platform',
         description:
-          'Built and maintained a high-traffic football news portal, delivering live match updates, player injuries, results and commentary for fans.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Laravel'],
+          'Developed and maintained a high-traffic news portal, delivering live match updates, player injuries, results, and commentary.',
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3'],
       },
       {
         name: 'Football Insights Portal',
         description:
-          'Developed and enhanced a football insights-analytics platform, providing real-time valuation models, transfer rumours, and interactive player–market dashboards for a global audience.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap', 'Laravel'],
+          'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards.',
+        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
       },
       {
         name: 'Real-time Embeddable Content Feed',
         description:
-          'Developed a real-time embeddable content feed using WebSockets for instant updates. Built a reusable UI component that can be embedded in other platforms, with a focus on responsive design and seamless integration.',
-        tech: ['Vue.js', 'Tailwind CSS', 'WebSockets', 'TypeScript'],
+          'Developed a reusable, real-time embeddable content feed using WebSockets for instant updates. Focused on responsive design and seamless integration.',
+        tech: ['Vue.js', 'Tailwind CSS', 'TypeScript'],
       },
     ],
   },
@@ -100,43 +100,47 @@ export const projects: Project[] = [
   {
     name: 'Education & Workshop Management Platform',
     description:
-      'Enhanced education and workshop management portals for early-learning programs, improving registration and user flows.',
-    tech: ['React', 'RTK', 'styled-components', 'Ant Design', 'TypeScript'],
+      'Enhanced education and workshop management portals, improving registration and user flows. Built and maintained frontend features for both user and admin interfaces.',
+    tech: ['React', 'Redux', 'styled-components', 'Ant Design', 'TypeScript'],
     products: [
       {
         name: 'Registration Portal',
         description:
-          'The interface where families or caregivers can browse workshop listings, register for upcoming sessions, and manage their enrolment.',
+          'Developed user-facing interfaces for browsing, registering, and managing workshop enrolment.',
       },
       {
         name: 'Admin Portal',
         description:
-          'For administrators or coordinators: managing workshop listings, handling registrations or waitlists, and tracking attendance or kit distribution.',
+          'Built admin tools for managing workshop listings, registrations, waitlists, and attendance tracking.',
       },
     ],
   },
   {
     name: 'Pet-Friendly Rental Management Platform',
     description:
-      'Built the landing page for a platform focused on pet-friendly rental management, helping property managers and tenants handle pet policies, documentation, and compliance online.',
+      'Built the landing page and frontend flows for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
     tech: ['Webflow', 'JavaScript (ES6+)'],
   },
   {
     name: 'Creator & Fan Engagement Platform',
     description:
-      'A platform that enables creators and entertainment brands to deepen fan engagement by providing AI-driven personalized interaction experiences, content, and operations support.',
-    tech: ['Ember.js', 'Parse', 'SCSS / SASS'],
+      'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
+    tech: ['Ember.js', 'SCSS / SASS'],
   },
   {
     name: 'Web3 Digital Asset Minting Platform',
     description:
-      'Web3-minting platform for launching tokenised digital assets. Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback.',
+      'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback for a Web3 digital asset minting platform.',
     tech: ['Vue.js', 'NestJS', 'Tailwind CSS', 'TypeScript'],
   },
   {
     name: 'Enterprise logistics & transportation platforms',
     description:
-      'Contributed shipment tracking, dashboards, and workflow automation features. Built reusable and responsive frontend components for the app, ensuring seamless user experience across devices.',
+      'Contributed shipment tracking, dashboards, and workflow automation features. Built reusable and responsive frontend components for seamless user experience.',
     tech: ['AngularJS', 'Bootstrap', 'TypeScript'],
   },
 ];
+
+// ---
+// Note for portfolio viewers:
+// Some projects do not include client names, links, or detailed descriptions due to confidentiality agreements. I am committed to respecting client privacy and NDAs.

@@ -80,6 +80,10 @@ export default function Home() {
           <span className="text-[10px] text-zinc-600 mt-2 block">
             (Dabbled with <span className="font-bold text-zinc-200">Framer Motion</span> — just exploring the basics and having fun with simple motion effects. 😄)
           </span>
+           <br />
+          <span className="text-[10px] text-zinc-600 mt-2 block">
+            Some projects do not include client names, links, or detailed descriptions due to confidentiality agreements. I am committed to respecting client privacy and NDAs.
+          </span>
         </motion.div>
       </main>
     </div>
