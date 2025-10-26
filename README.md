@@ -67,17 +67,19 @@ app/
 
 ## Customizing for Your Own Use
 
-Want to use this as a template? Go for it! Here's what you'll want to update:
+Want to use this as a template? Go for it! Feel free to fork this repo and make it your own. Just please give credit where it's due — link back to this repo and don't claim the original work as yours. Here's what you'll want to update:
 
 ### 1. Update Your Info
 
 Edit `app/components/sections/Hero.tsx`:
+
 - Change the name, title, and bio
 - Update social links (GitHub, LinkedIn, email)
 
 ### 2. Add Your Projects
 
 Edit `app/data/projects.ts`:
+
 - Add/remove projects
 - Include project names, descriptions, tech stacks, and links
 - Projects with links appear in "Featured Projects"
@@ -86,12 +88,14 @@ Edit `app/data/projects.ts`:
 ### 3. Update Your Skills
 
 Edit `app/data/skills.ts`:
+
 - Organize skills by category
 - Add or remove technologies you work with
 
 ### 4. Personalize Metadata
 
 Edit `app/layout.tsx`:
+
 - Update the title and description
 - Add your own favicon and OG image
 - Customize social media preview cards
@@ -99,6 +103,7 @@ Edit `app/layout.tsx`:
 ### 5. Tweak the Styles
 
 The color scheme uses a warm orange gradient with white backgrounds. To change it:
+
 - Check out `tailwind.config.ts` for custom colors
 - Update component class names as needed
 - Main page uses `from-white to-orange-50` gradient
@@ -107,6 +112,7 @@ The color scheme uses a warm orange gradient with white backgrounds. To change i
 ### 6. Customize Animations
 
 Framer Motion animations add personality throughout:
+
 - **Hero section** - Fade-in animations with wiggling coffee & laptop emojis
 - **Flame component** - Interactive flame animation effect on hover/tap with seeded randomness for consistency
 - **Project cards** - Staggered fade-in on scroll with spring hover effect
@@ -170,6 +176,7 @@ Or connect your GitHub repo to Vercel for automatic deployments.
 ### Other Platforms
 
 Works great on:
+
 - **Netlify** - Add a `netlify.toml` file
 - **GitHub Pages** - Export as static site
 - **Any Node.js hosting** - Just run `npm start`
@@ -188,7 +195,7 @@ Found a bug or have a suggestion? Feel free to open an issue or submit a PR!
 
 ## License
 
-Free to use as a template for your own portfolio. Just make it your own!
+Feel free to fork and use this as a template for your own portfolio! Just remember to give proper attribution — link back to this repository and don't pass off the design/code as your original work. Make it yours, but be cool about it 🤙
 
 ---
 
@@ -197,3 +204,7 @@ Built with Next.js, Tailwind, Framer Motion, and loose TypeScript 😉 — Desig
 _(Dabbled with Framer Motion — just exploring the basics and having fun with simple motion effects.)_
 
 **Available for remote work!** Let's connect 🚀
+
+---
+
+**Note:** Some projects do not include client names, links, or detailed descriptions due to confidentiality agreements. I am committed to respecting client privacy and NDAs. For the latest version and updates, see this repository.
