@@ -31,6 +31,7 @@ export default function Home() {
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             className="inline-block"
+            aria-hidden="true"
           >
             👋
           </motion.span>{' '}
@@ -52,6 +53,7 @@ export default function Home() {
             animate={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
             className="inline-block"
+            aria-hidden="true"
           >
             ☕
           </motion.span>
@@ -60,6 +62,7 @@ export default function Home() {
             animate={{ y: [0, -3, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             className="inline-block"
+            aria-hidden="true"
           >
             🤙
           </motion.span>
@@ -68,6 +71,7 @@ export default function Home() {
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
             className="inline-block"
+            aria-hidden="true"
           >
             🎶
           </motion.span>

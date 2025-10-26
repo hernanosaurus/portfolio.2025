@@ -1,8 +1,15 @@
+export interface RelatedProduct {
+  name: string;
+  link?: string;
+  description: string;
+}
+
 export interface Product {
   name: string;
   description: string;
   link?: string;
   tech?: string[];
+  related?: RelatedProduct[];
 }
 
 export interface Project {
@@ -71,10 +78,22 @@ export const projects: Project[] = [
         link: 'https://madgicx.com/ad-library',
       },
       {
-        name: 'AI-Ads (formerly ‘AI-Copywriter’)',
+        name: 'AI Copywriter',
         description:
-          'An end-to-end creative generation workflow: start with a text prompt, upload an image or select an example creative from the library, then the AI generates variants of ad creatives (images/videos), which can be edited and launched directly. Dramatically speeds up creative output, supports A/B testing, and integrates with ad deployment.',
-        link: 'https://madgicx.com/ai-ads',
+          'A powerful tool for generating high-performing ad copy using advanced AI. Users can input prompts, select tones, and instantly receive multiple creative text suggestions tailored for their campaigns. The core technology and workflows developed for AI Copywriter also powered the launch of the AI-Ads.',
+        link: 'https://ai-copywriter.madgicx.com/',
+        related: [
+          {
+            name: 'AI-Ads',
+            link: 'https://madgicx.com/ai-ads',
+            description: 'An end-to-end creative generation workflow: start with a text prompt, upload an image or select an example creative from the library, then the AI generates variants of ad creatives (images/videos), which can be edited and launched directly. Dramatically speeds up creative output, supports A/B testing, and integrates with ad deployment.'
+          }
+        ]
+      },
+      {
+        name: 'Sparkle',
+        description:
+          'An internal ticketing and creative request system empowering clients to easily submit design briefs and track progress for their ad creatives. I led the frontend development, building intuitive flows for ticket creation, status tracking, and designer collaboration. The UI is fast, modern, and tailored for seamless client–designer interaction.',
       },
     ],
   },
