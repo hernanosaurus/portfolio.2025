@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 import SocialLink from '../common/SocialLink';
-import Highlight from '../common/Highlight';
+import Flame from '../common/Flame';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -54,9 +54,9 @@ export default function Hero() {
         <br />
         <br />
         I&apos;m a&nbsp;
-        <Highlight>
+        <Flame>
           keyboard for hire
-        </Highlight>
+        </Flame>
         &nbsp; — ready to bring ideas to life, one line of code at a time.
       </motion.p>
       <motion.div
