@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 import { Project } from '../../data/projects';
 import Tag from './Tag';
 import Link from './Link';
@@ -13,13 +12,6 @@ interface CardProps {
 export default function Card({ project }: CardProps) {
   return (
     <motion.article
-      whileHover={{ scale: 1.02, y: -4 }}
-      transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 600,
-        mass: 0.2
-      }}
       className="rounded-lg border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 md:p-6 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-orange-400"
       aria-label={`Project: ${project.name}`}
     >
@@ -32,7 +24,6 @@ export default function Card({ project }: CardProps) {
           >
             <span className="flex items-center gap-1 align-middle">
               {project.name}
-              <ExternalLink className="w-4 h-4 hidden sm:inline-block align-middle" />
             </span>
           </Link>
         ) : (
@@ -53,7 +44,6 @@ export default function Card({ project }: CardProps) {
                   > 
                     <span className="flex items-center gap-1 align-middle">
                       {prod.name}
-                      <ExternalLink className="w-4 h-4 hidden sm:inline-block align-middle" />
                     </span>
                   </Link>
                 ) : (
@@ -70,24 +60,23 @@ export default function Card({ project }: CardProps) {
               )}
               {prod.related && prod.related.length > 0 && (
                 <div className="mt-2 ml-2 border-l-2 border-dashed border-zinc-700 pl-3">
-                  <div className="text-xs text-zinc-400 mb-1 font-semibold">Related:</div>
+                  <div className="text-xs md:text-sm text-zinc-400 mb-1 font-semibold">Related:</div>
                   {prod.related.map((rel) => (
                     <div key={rel.name} className="mb-2">
                       {rel.link ? (
                         <Link 
                           href={rel.link} 
                           ariaLabel={`Visit related product: ${rel.name}`}
-                          className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors"
+                          className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group text-base md:text-lg font-semibold"
                         >
                           <span className="flex items-center gap-1 align-middle">
                             {rel.name}
-                            <ExternalLink className="w-3 h-3 inline-block align-middle" />
                           </span>
                         </Link>
                       ) : (
-                        <span className="text-zinc-100">{rel.name}</span>
+                        <span className="text-zinc-100 text-base md:text-lg font-semibold">{rel.name}</span>
                       )}
-                      <div className="text-xs text-zinc-400 mt-0.5">{rel.description}</div>
+                      <div className="text-zinc-400 text-xs md:text-sm mt-0.5">{rel.description}</div>
                     </div>
                   ))}
                 </div>

@@ -74,7 +74,7 @@ export const projects: Project[] = [
       {
         name: 'Ad Library',
         description:
-          'A searchable, curated database of successful ad creatives across industries. Users can browse, filter by format/industry, save boards of favorite ads for inspiration, and use these as input for new ad generation.',
+          'I helped build the first iteration (MVP) of the Ad Library, laying the foundation for what the product has become today. The Ad Library is a searchable, curated database of successful ad creatives across industries. Users can browse, filter by format/industry, save boards of favorite ads for inspiration, and use these as input for new ad generation.',
         link: 'https://madgicx.com/ad-library',
       },
       {

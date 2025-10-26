@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import SocialLink from '../common/SocialLink';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -64,28 +65,31 @@ export default function Hero() {
         variants={fadeInUp}
         className="flex flex-row gap-3 md:gap-4 mt-2"
       >
-        <a
+        <SocialLink
           href="https://github.com/hernanosaurus"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit Nani's GitHub profile"
+          ariaLabel="Visit Nani's GitHub profile"
         >
-          <Github className="w-6 h-6 text-zinc-200 hover:text-orange-200 transition-colors" />
-        </a>
-        <a
+          <Github className="w-6 h-6" />
+        </SocialLink>
+        <SocialLink
           href="https://www.linkedin.com/in/hernan-terania/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit Nani's LinkedIn profile"
+          ariaLabel="Visit Nani's LinkedIn profile"
         >
-          <Linkedin className="w-6 h-6 text-zinc-200 hover:text-orange-200 transition-colors" />
-        </a>
-        <a href="mailto:hterania.dev@gmail.com" aria-label="Send email to Nani">
-          <Mail className="w-6 h-6 text-zinc-200 hover:text-orange-200 transition-colors" />
-        </a>
-        <a href="/hTerania.resume.2025.pdf" download aria-label="Download Nani's resume">
-          <FileText className="w-6 h-6 text-zinc-200 hover:text-orange-200 transition-colors" />
-        </a>
+          <Linkedin className="w-6 h-6" />
+        </SocialLink>
+        <SocialLink
+          href="mailto:hterania.dev@gmail.com"
+          ariaLabel="Send email to Nani"
+        >
+          <Mail className="w-6 h-6" />
+        </SocialLink>
+        <SocialLink
+          href="/hTerania.resume.2025.pdf"
+          ariaLabel="Download Nani's resume"
+          download
+        >
+          <FileText className="w-6 h-6" />
+        </SocialLink>
       </motion.div>
     </section>
   );
