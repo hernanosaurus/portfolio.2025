@@ -1,3 +1,7 @@
+import { Coding, LibrariesAndFrameworks, Tool } from './skills';
+
+export type TechEnum = Coding | LibrariesAndFrameworks | Tool;
+
 export interface RelatedProduct {
   name: string;
   link?: string;
@@ -8,14 +12,14 @@ export interface Product {
   name: string;
   description: string;
   link?: string;
-  tech?: string[];
+  tech?: TechEnum[];
   related?: RelatedProduct[];
 }
 
 export interface Project {
   name: string;
   description: string;
-  tech?: string[];
+  tech?: TechEnum[];
   link?: string;
   products?: Product[];
 }
@@ -30,37 +34,37 @@ export const projects: Project[] = [
         name: 'Football Player Transfer App',
         description:
           'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for mobile responsiveness.',
-        tech: ['React Native', 'Expo', 'TypeScript', 'One Signal'],
+        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal],
       },
       {
         name: 'Football Fan-site',
         description:
           'Led frontend development, translating Figma designs into a polished website. Integrated CMS for dynamic content and optimized for performance.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
       },
       {
         name: 'Football Fan Engagement Platform',
         description:
           'Built responsive UI and smooth user interactions for live content and community features. Focused on performance and accessibility.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
       },
       {
         name: 'Sports News Platform',
         description:
           'Developed and maintained a high-traffic news portal, delivering live match updates, player injuries, results, and commentary.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3'],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3],
       },
       {
         name: 'Football Insights Portal',
         description:
           'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards.',
-        tech: ['HTML5', 'JavaScript (ES6+)', 'SCSS / SASS', 'CSS3', 'Bootstrap'],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
       },
       {
         name: 'Real-time Embeddable Content Feed',
         description:
           'Developed a reusable, real-time embeddable content feed using WebSockets for instant updates. Focused on responsive design and seamless integration.',
-        tech: ['Vue.js', 'Pinia', 'Tailwind CSS', 'TypeScript'],
+        tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript],
       },
     ],
   },
@@ -68,7 +72,7 @@ export const projects: Project[] = [
     name: 'Madgicx',
     description:
       'An AI-powered advertising platform focused on helping brands and agencies optimize and scale their campaigns across platforms like Meta Platforms (Facebook & Instagram).',
-    tech: ['React', 'Redux', 'TypeScript', 'SCSS / SASS', 'Material UI'],
+    tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.TypeScript, Coding.SCSS, LibrariesAndFrameworks.MaterialUI],
     link: 'https://madgicx.com/',
     products: [
       {
@@ -101,7 +105,7 @@ export const projects: Project[] = [
     name: 'Education & Workshop Management Platform',
     description:
       'Joined the project after the original team moved on — picked up a large existing codebase, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for users.',
-    tech: ['React', 'Redux', 'React Query', 'styled-components', 'Ant Design', 'TypeScript'],
+    tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, LibrariesAndFrameworks.ReactQuery, LibrariesAndFrameworks.StyledComponents, LibrariesAndFrameworks.AntDesign, Coding.TypeScript],
     products: [
       {
         name: 'Registration Portal',
@@ -119,19 +123,19 @@ export const projects: Project[] = [
     name: 'Pet-Friendly Rental Management Platform',
     description:
       'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
-    tech: ['Webflow', 'JavaScript (ES6+)'],
+    tech: [Tool.Webflow, Coding.JavaScript],
   },
   {
     name: 'Creator & Fan Engagement Platform',
     description:
       'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
-    tech: ['Ember.js', 'SCSS / SASS'],
+    tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS],
   },
   {
     name: 'Web3 Digital Asset Minting Platform',
     description:
       'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for a Web3 digital asset minting platform.',
-    tech: ['Vue.js', 'Pinia', 'NestJS', 'Tailwind CSS', 'TypeScript'],
+    tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.NestJS, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript],
   },
   {
     name: 'Enterprise logistics & transportation platforms',
@@ -141,12 +145,12 @@ export const projects: Project[] = [
       {
         name: 'Enterprise Transportation Management Platform',
         description: 'Contributed to developing shipment tracking, analytics dashboards, and workflow features. Built modular UI components and optimized data-driven views for performance and maintainability.',
-        tech: ['React', 'Redux', 'SCSS / SASS', 'TypeScript'],
+        tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.SCSS, Coding.TypeScript],
       },
       {
         name: 'Shipping & Order Management Platform',
         description: 'Helped build core features like shipment creation, tracking, and order management. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
-        tech: ['AngularJS', 'NgRx', 'Bootstrap', 'TypeScript'],
+        tech: [LibrariesAndFrameworks.AngularJS, LibrariesAndFrameworks.NgRx, LibrariesAndFrameworks.Bootstrap, Coding.TypeScript],
       },
     ],
   },
