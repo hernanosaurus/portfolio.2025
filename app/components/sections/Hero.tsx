@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import SocialLink from '../common/SocialLink';
 import Flame from '../common/Flame';
+import Download from '../common/Download';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -53,11 +54,17 @@ export default function Hero() {
         probably find me watching movies or exploring design ideas just for fun.
         <br />
         <br />
-        I&apos;m a&nbsp;
-        <Flame>
-          keyboard for hire
-        </Flame>
-        &nbsp; — ready to bring ideas to life, one line of code at a time.
+         I&apos;m a&nbsp;
+        <Download
+          href="/hTerania.resume.2025.pdf"
+          ariaLabel="Download Nani's resume"
+          className="inline-block cursor-pointer"
+        >
+          <Flame>
+            <span className="underline underline-offset-2">keyboard for hire</span>
+          </Flame>
+        </Download>
+        &nbsp;— ready to bring ideas to life, one line of code at a time.
       </motion.p>
       <motion.div
         initial="hidden"
@@ -83,13 +90,6 @@ export default function Hero() {
           ariaLabel="Send email to Nani"
         >
           <Mail className="w-6 h-6" />
-        </SocialLink>
-        <SocialLink
-          href="/hTerania.resume.2025.pdf"
-          ariaLabel="Download Nani's resume"
-          download
-        >
-          <FileText className="w-6 h-6" />
         </SocialLink>
       </motion.div>
     </section>

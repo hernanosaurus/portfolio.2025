@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
-import { useState } from 'react';
 
 interface LinkProps {
   href: string;

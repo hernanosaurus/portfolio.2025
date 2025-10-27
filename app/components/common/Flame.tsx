@@ -182,7 +182,7 @@ export default function Flame({ children, className = '' }: FlameProps) {
           />
         ))}
       </span>
-      <span ref={textRef} className="relative z-20 inline-block align-middle">
+      <span ref={textRef} className="relative z-20 inline-block">
         <span
           className="font-bold block relative"
           style={{
