@@ -30,7 +30,7 @@ export const projects: Project[] = [
         name: 'Football Player Transfer App',
         description:
           'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for mobile responsiveness.',
-        tech: ['React Native', 'Expo', 'TypeScript'],
+        tech: ['React Native', 'Expo', 'TypeScript', 'One Signal'],
       },
       {
         name: 'Football Fan-site',
@@ -60,7 +60,7 @@ export const projects: Project[] = [
         name: 'Real-time Embeddable Content Feed',
         description:
           'Developed a reusable, real-time embeddable content feed using WebSockets for instant updates. Focused on responsive design and seamless integration.',
-        tech: ['Vue.js', 'Tailwind CSS', 'TypeScript'],
+        tech: ['Vue.js', 'Pinia', 'Tailwind CSS', 'TypeScript'],
       },
     ],
   },
@@ -80,7 +80,7 @@ export const projects: Project[] = [
       {
         name: 'AI Copywriter',
         description:
-          'A powerful tool for generating high-performing ad copy using advanced AI. Users can input prompts, select tones, and instantly receive multiple creative text suggestions tailored for their campaigns. The core technology and workflows developed for AI Copywriter also powered the launch of the AI-Ads.',
+          'Built the frontend for the app, which is intended for desktop users. Users can input prompts, select tones, and instantly receive multiple creative text suggestions tailored for their campaigns. The core technology and workflows developed for AI Copywriter also powered the launch of the AI-Ads.',
         link: 'https://ai-copywriter.madgicx.com/',
         related: [
           {
@@ -100,8 +100,8 @@ export const projects: Project[] = [
   {
     name: 'Education & Workshop Management Platform',
     description:
-      'Enhanced education and workshop management portals, improving registration and user flows. Built and maintained frontend features for both user and admin interfaces.',
-    tech: ['React', 'Redux', 'styled-components', 'Ant Design', 'TypeScript'],
+      'Joined the project after the original team moved on — picked up a large existing codebase, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for users.',
+    tech: ['React', 'Redux', 'React Query', 'styled-components', 'Ant Design', 'TypeScript'],
     products: [
       {
         name: 'Registration Portal',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
   {
     name: 'Pet-Friendly Rental Management Platform',
     description:
-      'Built the landing page and frontend flows for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
+      'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
     tech: ['Webflow', 'JavaScript (ES6+)'],
   },
   {
@@ -130,17 +130,24 @@ export const projects: Project[] = [
   {
     name: 'Web3 Digital Asset Minting Platform',
     description:
-      'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback for a Web3 digital asset minting platform.',
-    tech: ['Vue.js', 'NestJS', 'Tailwind CSS', 'TypeScript'],
+      'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for a Web3 digital asset minting platform.',
+    tech: ['Vue.js', 'Pinia', 'NestJS', 'Tailwind CSS', 'TypeScript'],
   },
   {
     name: 'Enterprise logistics & transportation platforms',
     description:
-      'Contributed shipment tracking, dashboards, and workflow automation features. Built reusable and responsive frontend components for seamless user experience.',
-    tech: ['AngularJS', 'Bootstrap', 'TypeScript'],
+      'Contributed to multiple versions of enterprise logistics and transportation platforms, building reusable and responsive frontend components, shipment tracking, dashboards, and workflow automation features.',
+    products: [
+      {
+        name: 'Enterprise Transportation Management Platform',
+        description: 'Contributed to developing shipment tracking, analytics dashboards, and workflow features. Built modular UI components and optimized data-driven views for performance and maintainability.',
+        tech: ['React', 'Redux', 'SCSS / SASS', 'TypeScript'],
+      },
+      {
+        name: 'Shipping & Order Management Platform',
+        description: 'Helped build core features like shipment creation, tracking, and order management. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
+        tech: ['AngularJS', 'NgRx', 'Bootstrap', 'TypeScript'],
+      },
+    ],
   },
 ];
-
-// ---
-// Note for portfolio viewers:
-// Some projects do not include client names, links, or detailed descriptions due to confidentiality agreements. I am committed to respecting client privacy and NDAs.
