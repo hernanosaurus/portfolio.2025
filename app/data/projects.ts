@@ -40,25 +40,25 @@ export const projects: Project[] = [
         name: 'Football Fan-site',
         description:
           'Led frontend development, translating Figma designs into a polished website. Integrated CMS for dynamic content and optimized for performance.',
-        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
       },
       {
         name: 'Football Fan Engagement Platform',
         description:
           'Built responsive UI and smooth user interactions for live content and community features. Focused on performance and accessibility.',
-        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
       },
       {
         name: 'Sports News Platform',
         description:
           'Developed and maintained a high-traffic news portal, delivering live match updates, player injuries, results, and commentary.',
-        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, Coding.PHP, LibrariesAndFrameworks.Laravel],
       },
       {
         name: 'Football Insights Portal',
         description:
           'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards.',
-        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap],
+        tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
       },
       {
         name: 'Real-time Embeddable Content Feed',

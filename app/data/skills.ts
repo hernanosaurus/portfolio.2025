@@ -14,6 +14,7 @@ export enum Coding {
   CSS3 = 'CSS3',
   SCSS = 'SCSS / SASS',
   TypeScript = 'TypeScript',
+  PHP = 'PHP'
 }
 
 export enum LibrariesAndFrameworks {
@@ -40,6 +41,7 @@ export enum LibrariesAndFrameworks {
   StyledComponents = 'styled-components',
   MaterialUI = 'Material UI',
   Bootstrap = 'Bootstrap',
+  Laravel = 'Laravel',
   Expo = 'Expo',
 }
 
@@ -67,6 +69,7 @@ export const skills: Skills = {
     Coding.CSS3,
     Coding.SCSS,
     Coding.TypeScript,
+    Coding.PHP,
   ],
   [SkillCategories.LibrariesAndFrameworks]: [
     LibrariesAndFrameworks.jQuery,
@@ -88,6 +91,7 @@ export const skills: Skills = {
     LibrariesAndFrameworks.MaterialUI,
     LibrariesAndFrameworks.Bootstrap,
     LibrariesAndFrameworks.Expo,
+    LibrariesAndFrameworks.Laravel,
   ],
   [SkillCategories.Tools]: [
     Tool.VSCode,
