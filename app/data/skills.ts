@@ -57,6 +57,7 @@ export enum Tool {
   AdobePhotoshop = 'Adobe Photoshop',
   AdobeIllustrator = 'Adobe Illustrator',
   OneSignal = 'One Signal',
+  WebSockets = 'WebSockets',
 }
 
 export const skills: Skills = {
@@ -101,5 +102,7 @@ export const skills: Skills = {
     Tool.Figma,
     Tool.AdobePhotoshop,
     Tool.AdobeIllustrator,
+    Tool.OneSignal,
+    Tool.WebSockets,
   ],
 };

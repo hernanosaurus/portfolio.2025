@@ -64,7 +64,7 @@ export const projects: Project[] = [
         name: 'Real-time Embeddable Content Feed',
         description:
           'Developed a reusable, real-time embeddable content feed using WebSockets for instant updates. Focused on responsive design and seamless integration.',
-        tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript],
+        tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript, Tool.WebSockets],
       },
     ],
   },
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     name: 'Creator & Fan Engagement Platform',
     description:
       'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
-    tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS],
+    tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets],
   },
   {
     name: 'Web3 Digital Asset Minting Platform',
