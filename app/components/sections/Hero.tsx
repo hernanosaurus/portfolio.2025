@@ -39,7 +39,7 @@ export default function Hero() {
           </motion.span>
         </h1>
         <h2 className="text-base md:text-lg font-mono text-zinc-200 mb-2">
-          Creative / Frontend Developer.{' '}
+          Frontend Engineer / Creative Developer.
         </h2>
       </motion.div>
       <motion.p
