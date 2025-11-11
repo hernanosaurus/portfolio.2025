@@ -60,6 +60,7 @@ export enum Tool {
   AdobeIllustrator = 'Adobe Illustrator',
   OneSignal = 'One Signal',
   WebSockets = 'WebSockets',
+  MobileApp = 'Mobile App'
 }
 
 export const skills: Skills = {

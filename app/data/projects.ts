@@ -33,8 +33,8 @@ export const projects: Project[] = [
       {
         name: 'Football Player Transfer App',
         description:
-          'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for mobile responsiveness.',
-        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal],
+          'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for performance.',
+        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, Tool.MobileApp],
       },
       {
         name: 'Football Fan-site',
