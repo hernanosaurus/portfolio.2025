@@ -45,6 +45,9 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hernanosaurus.dev/" />
         <meta property="og:image" content="https://hernanosaurus.dev/og-image.png" />
+        <meta property="og:image:width" content="2416" />
+        <meta property="og:image:height" content="1276" />
+        <meta property="og:image:alt" content="Nani Terania - Frontend Engineer Portfolio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Nani Terania | hernanosaurus | Keyboard for Hire" />
         <meta
@@ -62,7 +65,7 @@ export default function RootLayout({
               alternateName: 'hernanosaurus',
               url: 'https://hernanosaurus.dev/',
               logo: 'https://hernanosaurus.dev/favicon.svg',
-              image: 'https://hernanosaurus.dev/favicon.svg',
+              image: 'https://hernanosaurus.dev/og-image.png',
               jobTitle: 'Frontend Engineer',
               sameAs: [
                 'https://github.com/hernanosaurus',
