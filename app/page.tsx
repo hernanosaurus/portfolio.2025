@@ -47,11 +47,43 @@ export default function Home() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-4 text-center text-xs text-zinc-500 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto break-words leading-snug"
         >
-          Built with <span className="font-bold text-zinc-200">Next.js</span>,{' '}
-          <span className="font-bold text-zinc-200">Tailwind</span>, and loose{' '}
-          <span className="font-bold text-zinc-200">TypeScript</span> 😉 — deployed on{' '}
-          <span className="font-bold text-zinc-200">Vercel</span>. Designed and coded with good
-          coffee{' '}
+          Built with{' '}
+          <a
+            href="https://nextjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-zinc-200 underline underline-offset-2 hover:text-orange-400 transition-colors"
+          >
+            Next.js
+          </a>
+          ,{' '}
+          <a
+            href="https://tailwindcss.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-zinc-200 underline underline-offset-2 hover:text-orange-400 transition-colors"
+          >
+            Tailwind
+          </a>
+          , and loose{' '}
+          <a
+            href="https://www.typescriptlang.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-zinc-200 underline underline-offset-2 hover:text-orange-400 transition-colors"
+          >
+            TypeScript
+          </a>{' '}
+          😉 — deployed on{' '}
+          <a
+            href="https://vercel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-zinc-200 underline underline-offset-2 hover:text-orange-400 transition-colors"
+          >
+            Vercel
+          </a>
+          . Designed and coded with good coffee{' '}
           <motion.span
             animate={{ rotate: [0, -10, 10, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
@@ -81,8 +113,16 @@ export default function Home() {
           .
           <br />
           <span className="text-[10px] text-zinc-600 mt-2 block">
-            (Dabbled with <span className="font-bold text-zinc-200">Framer Motion</span> — just
-            exploring the basics and having fun with simple motion effects. 😄)
+            (Dabbled with{' '}
+            <a
+              href="https://www.framer.com/motion"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-zinc-200 underline underline-offset-2 hover:text-orange-400 transition-colors"
+            >
+              Framer Motion
+            </a>{' '}
+            — just exploring the basics and having fun with simple motion effects. 😄)
           </span>
           <br />
           <span className="text-[10px] text-zinc-600 mt-2 block">
