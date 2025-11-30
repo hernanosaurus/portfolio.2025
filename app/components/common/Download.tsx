@@ -16,7 +16,8 @@ export default function Download({
   return (
     <a
       href={href}
-      download
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
       aria-label={ariaLabel}
       tabIndex={0}

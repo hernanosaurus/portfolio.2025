@@ -1,11 +1,23 @@
 import { Coding, LibrariesAndFrameworks, Tool } from './skills';
 
-export type TechEnum = Coding | LibrariesAndFrameworks | Tool;
+export type TechEnum = Coding | LibrariesAndFrameworks | Tool | MobilePlatform;
+
+export enum Platform {
+  Desktop = 'desktop',
+  Mobile = 'mobile',
+  Both = 'both',
+}
+
+export enum MobilePlatform {
+  Android = 'Android',
+  iOS = 'iOS',
+}
 
 export interface RelatedProduct {
   name: string;
   link?: string;
   description: string;
+  platform?: Platform;
 }
 
 export interface Product {
@@ -14,6 +26,7 @@ export interface Product {
   link?: string;
   tech?: TechEnum[];
   related?: RelatedProduct[];
+  platform?: Platform;
 }
 
 export interface Project {
@@ -22,6 +35,7 @@ export interface Project {
   tech?: TechEnum[];
   link?: string;
   products?: Product[];
+  platform?: Platform;
 }
 
 export const projects: Project[] = [
@@ -30,41 +44,54 @@ export const projects: Project[] = [
     description:
       'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
     products: [
+      // {
+      //   name: 'Sports News & Match Tracking App',
+      //   description:
+      //     'Developed a full mobile app offering football news, match schedules, live scores, and team details. Implemented optimized data fetching, reusable components, and smooth in-app navigation.',
+      //   tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, Tool.MobileApp, MobilePlatform.Android, MobilePlatform.iOS],
+      //   platform: Platform.Mobile,
+      // },
       {
         name: 'Football Player Transfer App',
         description:
           'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for performance.',
-        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, Tool.MobileApp],
+        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
+        platform: Platform.Mobile,
       },
       {
         name: 'Football Fan-site',
         description:
           'Led frontend development, translating Figma designs into a polished website. Integrated CMS for dynamic content and optimized for performance.',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
+        platform: Platform.Both,
       },
       {
         name: 'Football Fan Engagement Platform',
         description:
           'Built responsive UI and smooth user interactions for live content and community features. Focused on performance and accessibility.',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
+        platform: Platform.Both,
       },
       {
         name: 'Sports News Platform',
         description:
           'Developed and maintained a high-traffic news portal, delivering live match updates, player injuries, results, and commentary.',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, Coding.PHP, LibrariesAndFrameworks.Laravel],
+        platform: Platform.Both,
       },
       {
         name: 'Football Insights Portal',
         description:
           'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards.',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
+        platform: Platform.Both,
       },
       {
         name: 'Real-time Embeddable Content Feed',
         description:
           'Developed a reusable, real-time embeddable content feed using WebSockets for instant updates. Focused on responsive design and seamless integration.',
         tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript, Tool.WebSockets],
+        platform: Platform.Both,
       },
     ],
   },
@@ -74,6 +101,7 @@ export const projects: Project[] = [
       'An AI-powered advertising platform focused on helping brands and agencies optimize and scale their campaigns across platforms like Meta Platforms (Facebook & Instagram).',
     tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.TypeScript, Coding.SCSS, LibrariesAndFrameworks.MaterialUI],
     link: 'https://madgicx.com/',
+    platform: Platform.Desktop,
     products: [
       {
         name: 'Ad Library',
@@ -90,7 +118,7 @@ export const projects: Project[] = [
           {
             name: 'AI-Ads',
             link: 'https://madgicx.com/ai-ads',
-            description: 'An end-to-end creative generation workflow: start with a text prompt, upload an image or select an example creative from the library, then the AI generates variants of ad creatives (images/videos), which can be edited and launched directly. Dramatically speeds up creative output, supports A/B testing, and integrates with ad deployment.'
+            description: 'An end-to-end creative generation workflow: start with a text prompt, upload an image or select an example creative from the library, then the AI generates variants of ad creatives (images/videos), which can be edited and launched directly. Dramatically speeds up creative output, supports A/B testing, and integrates with ad deployment.',
           }
         ]
       },
@@ -106,6 +134,7 @@ export const projects: Project[] = [
     description:
       'Joined the project after the original team moved on — picked up a large existing codebase, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for users.',
     tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, LibrariesAndFrameworks.ReactQuery, LibrariesAndFrameworks.StyledComponents, LibrariesAndFrameworks.AntDesign, Coding.TypeScript],
+    platform: Platform.Desktop,
     products: [
       {
         name: 'Registration Portal',
@@ -124,23 +153,27 @@ export const projects: Project[] = [
     description:
       'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
     tech: [Tool.Webflow, Coding.JavaScript],
+    platform: Platform.Both,
   },
   {
     name: 'Creator & Fan Engagement Platform',
     description:
       'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
     tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets],
+    platform: Platform.Both,
   },
   {
     name: 'Web3 Digital Asset Minting Platform',
     description:
       'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for a Web3 digital asset minting platform.',
     tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.NestJS, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript],
+    platform: Platform.Both,
   },
   {
-    name: 'Enterprise logistics & transportation platforms',
+    name: 'Enterprise logistics & transportation company',
     description:
       'Contributed to multiple versions of enterprise logistics and transportation platforms, building reusable and responsive frontend components, shipment tracking, dashboards, and workflow automation features.',
+    platform: Platform.Desktop,
     products: [
       {
         name: 'Enterprise Transportation Management Platform',
