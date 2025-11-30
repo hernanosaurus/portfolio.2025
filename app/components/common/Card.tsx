@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import { Project } from '../../data/projects';
 import Tag from './Tag';
 import Link from './Link';
@@ -8,12 +9,44 @@ import PlatformIcon from './PlatformIcon';
 
 interface CardProps {
   project: Project;
+  isActive?: boolean;
+  onInView?: (isInView: boolean) => void;
 }
 
-export default function Card({ project }: CardProps) {
+export default function Card({ project, isActive = false, onInView }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!onInView) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        onInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the card is visible
+        rootMargin: '0px', // No margin - detect all cards equally
+      }
+    );
+
+    const currentCard = cardRef.current;
+    if (currentCard) {
+      observer.observe(currentCard);
+    }
+
+    return () => {
+      if (currentCard) {
+        observer.unobserve(currentCard);
+      }
+    };
+  }, [onInView]);
+
   return (
     <motion.article
-      className="rounded-lg border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 md:p-6 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-orange-400"
+      ref={cardRef}
+      className={`rounded-lg border bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 md:p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-orange-400 ${
+        isActive ? 'border-orange-400 shadow-lg' : 'border-zinc-800'
+      }`}
     >
       <div className="flex items-start sm:items-center justify-between gap-3 mb-2">
         <h3 className="text-lg md:text-xl font-bold">

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useCallback, useMemo, useState } from 'react';
 import { Project } from '../../data/projects';
 import Card from '../common/Card';
 
@@ -24,12 +25,35 @@ const item = {
 };
 
 export default function Projects({ projects }: ProjectsProps) {
-  const linkedProjects = projects.filter(
-    (p) => p.link || (p.products && p.products.some((prod) => prod.link)),
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+
+  const linkedProjects = useMemo(
+    () => projects.filter((p) => p.link || (p.products && p.products.some((prod) => prod.link))),
+    [projects]
   );
-  const unlinkedProjects = projects.filter(
-    (p) => !p.link && !(p.products && p.products.some((prod) => prod.link)),
+
+  const unlinkedProjects = useMemo(
+    () => projects.filter((p) => !p.link && !(p.products && p.products.some((prod) => prod.link))),
+    [projects]
   );
+
+  // Derive active card from visible cards (always the topmost/lowest index)
+  const activeCardIndex = useMemo(() => {
+    if (visibleCards.size === 0) return null;
+    return Math.min(...visibleCards);
+  }, [visibleCards]);
+
+  const handleCardVisibility = useCallback((index: number, isVisible: boolean) => {
+    setVisibleCards((prev) => {
+      const newSet = new Set(prev);
+      if (isVisible) {
+        newSet.add(index);
+      } else {
+        newSet.delete(index);
+      }
+      return newSet;
+    });
+  }, []);
 
   return (
     <section>
@@ -51,11 +75,12 @@ export default function Projects({ projects }: ProjectsProps) {
             viewport={{ once: true }}
             className="grid gap-8"
           >
-            {linkedProjects.map((project) => (
+            {linkedProjects.map((project, index) => (
               <motion.div key={project.name} variants={item}>
-                <Card 
-                  project={project} 
-                  // Card is a semantic article, so no aria-label needed here
+                <Card
+                  project={project}
+                  isActive={activeCardIndex === index}
+                  onInView={(isInView) => handleCardVisibility(index, isInView)}
                 />
               </motion.div>
             ))}
@@ -80,11 +105,15 @@ export default function Projects({ projects }: ProjectsProps) {
             viewport={{ once: true }}
             className="grid gap-8"
           >
-            {unlinkedProjects.map((project) => (
+            {unlinkedProjects.map((project, index) => (
               <motion.div key={project.name} variants={item}>
-                <Card 
-                  project={project} 
-                  // Card is a semantic article, so no aria-label needed here
+                <Card
+                  project={project}
+                  isActive={activeCardIndex === linkedProjects.length + index}
+                  onInView={(isInView) => {
+                    const cardIndex = linkedProjects.length + index;
+                    handleCardVisibility(cardIndex, isInView);
+                  }}
                 />
               </motion.div>
             ))}
