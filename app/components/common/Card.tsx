@@ -15,7 +15,7 @@ export default function Card({ project }: CardProps) {
     <motion.article
       className="rounded-lg border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 md:p-6 shadow-sm transition-all duration-200 hover:shadow-lg hover:border-orange-400"
     >
-      <div className="flex items-center justify-between gap-3 mb-2">
+      <div className="flex items-start sm:items-center justify-between gap-3 mb-2">
         <h3 className="text-lg md:text-xl font-bold">
           {project.link ? (
             <Link
@@ -40,7 +40,7 @@ export default function Card({ project }: CardProps) {
         <div className="mb-2 pl-4 border-l border-zinc-700">
           {project.products.map((prod) => (
             <div key={prod.name} className="mb-4">
-              <div className="flex items-center justify-between gap-3 mb-2">
+              <div className="flex items-start sm:items-center justify-between gap-3 mb-2">
                 <h4 className="text-base md:text-lg font-semibold">
                   {prod.link ? (
                     <Link
@@ -73,7 +73,7 @@ export default function Card({ project }: CardProps) {
                   <div className="text-xs md:text-sm text-zinc-400 mb-1 font-semibold">Related:</div>
                   {prod.related.map((rel) => (
                     <div key={rel.name} className="mb-2">
-                      <div className="flex items-center justify-between gap-3 mb-1">
+                      <div className="flex items-start sm:items-center justify-between gap-3 mb-1">
                         <div>
                           {rel.link ? (
                             <Link

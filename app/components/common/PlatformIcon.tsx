@@ -44,7 +44,7 @@ export default function PlatformIcon({ platform, className = '', showLabel = tru
           strokeWidth={2}
           aria-hidden="true"
         />
-        {showLabel && <span className="text-xs" aria-hidden="true">{config.label}</span>}
+        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
       </span>
     );
   }
@@ -62,7 +62,7 @@ export default function PlatformIcon({ platform, className = '', showLabel = tru
           strokeWidth={2}
           aria-hidden="true"
         />
-        {showLabel && <span className="text-xs" aria-hidden="true">{config.label}</span>}
+        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
       </span>
     );
   }
@@ -87,7 +87,7 @@ export default function PlatformIcon({ platform, className = '', showLabel = tru
             aria-hidden="true"
           />
         </span>
-        {showLabel && <span className="text-xs" aria-hidden="true">{config.label}</span>}
+        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
       </span>
     );
   }
