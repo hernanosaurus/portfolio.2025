@@ -43,6 +43,8 @@ export enum LibrariesAndFrameworks {
   Bootstrap = 'Bootstrap',
   Laravel = 'Laravel',
   Expo = 'Expo',
+  TanStack = 'TanStack',
+  Parse = 'Parse',
 }
 
 export enum Tool {
@@ -93,6 +95,8 @@ export const skills: Skills = {
     LibrariesAndFrameworks.Bootstrap,
     LibrariesAndFrameworks.Expo,
     LibrariesAndFrameworks.Laravel,
+    LibrariesAndFrameworks.TanStack,
+    LibrariesAndFrameworks.Parse,
   ],
   [SkillCategories.Tools]: [
     Tool.VSCode,

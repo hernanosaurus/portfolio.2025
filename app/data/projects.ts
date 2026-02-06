@@ -44,13 +44,13 @@ export const projects: Project[] = [
     description:
       'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
     products: [
-      // {
-      //   name: 'Sports News & Match Tracking App',
-      //   description:
-      //     'Developed a full mobile app offering football news, match schedules, live scores, and team details. Implemented optimized data fetching, reusable components, and smooth in-app navigation.',
-      //   tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, Tool.MobileApp, MobilePlatform.Android, MobilePlatform.iOS],
-      //   platform: Platform.Mobile,
-      // },
+      {
+        name: 'Sports News and Live Updates App',
+        description:
+          'Developed responsive authentication flows with social login and guest access, built real-time data visualizations for live games, scores, match schedules, and news features, implemented a push notification system to drive timely user engagement, and optimized cross-platform performance across iOS and Android.',
+        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
+        platform: Platform.Mobile,
+      },
       {
         name: 'Football Player Transfer App',
         description:
@@ -153,6 +153,13 @@ export const projects: Project[] = [
     description:
       'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
     tech: [Tool.Webflow, Coding.JavaScript],
+    platform: Platform.Both,
+  },
+  {
+    name: 'Creator Link & Content Monetization Platform',
+    description:
+      'Built a web-based platform that provides creators with a centralized hub to share links and monetize their content from a single customizable profile.',
+    tech: [LibrariesAndFrameworks.React, Coding.TypeScript, LibrariesAndFrameworks.TanStack, LibrariesAndFrameworks.CSS3, LibrariesAndFrameworks.TailwindCSS, Tool.Vite],
     platform: Platform.Both,
   },
   {
