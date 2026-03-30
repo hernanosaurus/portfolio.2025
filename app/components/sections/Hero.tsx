@@ -60,9 +60,10 @@ export default function Hero() {
           ariaLabel="Download Nani's resume"
           className="relative inline-block cursor-pointer group"
         >
-          <Flame>
-            <span className="inline-flex items-center border-b border-current pb-0">keyboard for hire <FileDown className="w-4 h-4 ml-0.5" /></span>
-          </Flame>
+          <span className="inline-flex items-center">
+            <Flame>keyboard for hire</Flame>
+            <FileDown className="w-4 h-4 ml-0.5" />
+          </span>
           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xs text-zinc-200 opacity-0 transition-opacity group-hover:opacity-100">
             Download Resume
           </span>
