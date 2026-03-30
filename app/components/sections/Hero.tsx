@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, FileDown } from 'lucide-react';
 import SocialLink from '../common/SocialLink';
 import Flame from '../common/Flame';
 import Download from '../common/Download';
@@ -56,13 +56,16 @@ export default function Hero() {
         <br />
          I&apos;m a&nbsp;
         <Download
-          href="/hTerania.resume.2025.pdf"
+          href="/hTerania.resume.2026.pdf"
           ariaLabel="Download Nani's resume"
-          className="inline-block cursor-pointer"
+          className="relative inline-block cursor-pointer group"
         >
           <Flame>
-            <span className="underline underline-offset-2">keyboard for hire</span>
+            <span className="inline-flex items-center border-b border-current pb-0">keyboard for hire <FileDown className="w-4 h-4 ml-0.5" /></span>
           </Flame>
+          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xs text-zinc-200 opacity-0 transition-opacity group-hover:opacity-100">
+            Download Resume
+          </span>
         </Download>
         &nbsp;— ready to bring ideas to life, one line of code at a time.
       </motion.p>
