@@ -8,7 +8,7 @@ import {
   useTransform,
   useReducedMotion,
 } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Download from '../common/Download';
 import CoffeeEasterEgg from '../common/CoffeeEasterEgg';
 import CoffeeLog from './CoffeeLog';
@@ -27,6 +27,7 @@ export default function Hero() {
   const shouldReduce = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const nameRef = useRef<HTMLHeadingElement>(null);
+  const [nameHovered, setNameHovered] = useState(false);
 
   const weight = useMotionValue(IDLE_WEIGHT);
   const width = useMotionValue(IDLE_WIDTH);
@@ -135,7 +136,7 @@ export default function Hero() {
         className="scanlines pointer-events-none absolute inset-0 z-0"
       />
       <SocialRail />
-      <CoffeeLog />
+      <CoffeeLog recessed={nameHovered} />
 
       <motion.div
         style={
@@ -152,19 +153,49 @@ export default function Hero() {
           <span className="text-brand-cyan-400">◆</span> Portfolio · MMXXVI
         </motion.p>
 
-        <div className="relative">
+        <motion.div
+          {...motionProps(80, 500, shouldReduce ?? false)}
+          className="relative"
+        >
           <motion.span
-            {...motionProps(80, 500, shouldReduce ?? false)}
             aria-hidden="true"
-            className="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 font-display font-bold outline-text leading-none tracking-tighter uppercase whitespace-nowrap overflow-hidden text-ellipsis"
-            style={{ fontSize: 'clamp(48px, 9vw, 160px)' }}
+            animate={
+              shouldReduce
+                ? { opacity: nameHovered ? 0.95 : 0.5 }
+                : {
+                    opacity: nameHovered ? 0.95 : 0.5,
+                    scale: nameHovered ? 1.06 : 1,
+                  }
+            }
+            transition={{
+              opacity: { duration: 0.35, ease: 'easeOut' },
+              scale: { type: 'spring' as const, stiffness: 180, damping: 22 },
+            }}
+            className="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 font-display font-bold outline-text-bold leading-none tracking-tight uppercase whitespace-nowrap origin-left"
+            style={{ fontSize: 'clamp(48px, 8vw, 140px)' }}
           >
             keyboard for hire
           </motion.span>
           <motion.h1
             ref={nameRef}
-            {...motionProps(80, 500, shouldReduce ?? false)}
-            className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none"
+            animate={
+              shouldReduce
+                ? { opacity: nameHovered ? 0.35 : 1 }
+                : {
+                    opacity: nameHovered ? 0.3 : 1,
+                    scale: nameHovered ? 0.88 : 1,
+                  }
+            }
+            transition={{
+              opacity: { duration: 0.35, ease: 'easeOut' },
+              scale: { type: 'spring' as const, stiffness: 180, damping: 22 },
+            }}
+            onHoverStart={() => setNameHovered(true)}
+            onHoverEnd={() => setNameHovered(false)}
+            onFocus={() => setNameHovered(true)}
+            onBlur={() => setNameHovered(false)}
+            tabIndex={0}
+            className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none cursor-default origin-left focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
             style={{ fontSize: 'clamp(80px, 14vw, 220px)' }}
           >
             {shouldReduce ? (
@@ -179,7 +210,7 @@ export default function Hero() {
               <KineticName smoothWeight={smoothWeight} smoothWidth={smoothWidth} />
             )}
           </motion.h1>
-        </div>
+        </motion.div>
 
         <motion.p
           {...motionProps(160, 400, shouldReduce ?? false)}

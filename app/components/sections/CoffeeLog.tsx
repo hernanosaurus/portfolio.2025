@@ -25,7 +25,11 @@ function formatRelative(ms: number): string {
   return `${h}h ago`;
 }
 
-export default function CoffeeLog() {
+interface CoffeeLogProps {
+  recessed?: boolean;
+}
+
+export default function CoffeeLog({ recessed = false }: CoffeeLogProps) {
   const shouldReduce = useReducedMotion();
   const { count, lastClickAt } = useCoffee();
   const [now, setNow] = useState<number>(() => Date.now());
@@ -42,9 +46,24 @@ export default function CoffeeLog() {
   const countLabel = String(count).padStart(3, '0');
 
   return (
-    <aside
+    <motion.aside
       aria-label="Coffee log"
-      className="hidden lg:block absolute top-16 right-16 xl:right-24 z-20 w-72 xl:w-80 font-mono select-none pointer-events-none"
+      animate={
+        shouldReduce
+          ? { opacity: recessed ? 0.15 : 1 }
+          : {
+              opacity: recessed ? 0.15 : 1,
+              scale: recessed ? 0.97 : 1,
+              y: recessed ? -6 : 0,
+            }
+      }
+      transition={{
+        opacity: { duration: 0.35, ease: 'easeOut' },
+        scale: { type: 'spring' as const, stiffness: 180, damping: 22 },
+        y: { type: 'spring' as const, stiffness: 180, damping: 22 },
+      }}
+      style={{ zIndex: recessed ? 0 : 20 }}
+      className="hidden lg:block absolute top-16 right-16 xl:right-24 w-72 xl:w-80 font-mono select-none pointer-events-none origin-top-right"
     >
       <div
         className={`rounded-md border transition-colors duration-500 ${
@@ -119,7 +138,7 @@ export default function CoffeeLog() {
           {isLive ? '> logging enabled' : '> click coffee to start'}
         </div>
       </div>
-    </aside>
+    </motion.aside>
   );
 }
 

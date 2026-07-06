@@ -72,22 +72,24 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
       )}
       {!hasProducts ? (
         <>
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-lg md:text-xl font-bold">
-              {project.link ? (
-                <Link
-                  href={project.link}
-                  ariaLabel={`Visit project: ${project.name}`}
-                >
-                  {project.name}
-                </Link>
-              ) : (
-                <span className="text-zinc-100">{project.name}</span>
-              )}
-            </h3>
-            {project.platform && <PlatformIcon platform={project.platform} />}
-          </div>
-          <p className="mt-1 text-sm md:text-base text-zinc-300 leading-relaxed">{project.description}</p>
+          <h3 className="text-lg md:text-xl font-bold">
+            {project.link ? (
+              <Link
+                href={project.link}
+                ariaLabel={`Visit project: ${project.name}`}
+              >
+                {project.name}
+              </Link>
+            ) : (
+              <span className="text-zinc-100">{project.name}</span>
+            )}
+          </h3>
+          {project.platform && (
+            <div className="mt-2 flex items-center gap-2">
+              <PlatformIcon platform={project.platform} />
+            </div>
+          )}
+          <p className="mt-2 text-sm md:text-base text-zinc-300 leading-relaxed">{project.description}</p>
           {project.tech && (
             <div className="mt-3 flex flex-wrap gap-1.5">
               {project.tech.map((tech) => (
@@ -103,9 +105,9 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls={productsId}
-            className="w-full text-left min-h-11 flex items-start justify-between gap-3 focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded"
+            className="w-full text-left min-h-11 flex flex-col gap-2 focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded"
           >
-            <h3 className="text-lg md:text-xl font-bold">
+            <h3 className="text-lg md:text-xl font-bold w-full">
               {project.link ? (
                 <span onClick={(e) => e.stopPropagation()}>
                   <Link
@@ -119,7 +121,7 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                 <span className="text-zinc-100">{project.name}</span>
               )}
             </h3>
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-2 flex-wrap">
               {project.platform && <PlatformIcon platform={project.platform} />}
               <span
                 aria-hidden="true"
@@ -130,14 +132,14 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
               <motion.span
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: shouldReduce ? 0 : 0.2 }}
-                className="inline-flex text-zinc-500"
+                className="inline-flex text-zinc-500 ml-auto"
               >
                 <ChevronDown aria-hidden="true" className="w-4 h-4" />
               </motion.span>
             </div>
           </button>
 
-          <p className="mt-1 text-sm md:text-base text-zinc-400 leading-relaxed">{project.description}</p>
+          <p className="mt-2 text-sm md:text-base text-zinc-400 leading-relaxed">{project.description}</p>
 
           <AnimatePresence initial={false}>
             {isOpen && (
@@ -151,15 +153,23 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                 style={{ overflow: 'hidden' }}
               >
                 <div className="mt-3 pt-3 border-t border-zinc-800/80">
-                  {project.products!.map((prod) => (
+                  {project.products!.map((prod) => {
+                    const bulletPlatform = prod.platform ?? project.platform;
+                    return (
                     <div
                       key={prod.name}
                       className="flex gap-3 pb-3 mb-3 border-b border-zinc-800/50 last:border-b-0 last:mb-0 last:pb-0"
                     >
-                      <span
-                        aria-hidden="true"
-                        className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-1.5"
-                      />
+                      {bulletPlatform ? (
+                        <span className="shrink-0 leading-6 md:leading-7">
+                          <PlatformIcon platform={bulletPlatform} variant="bullet" />
+                        </span>
+                      ) : (
+                        <span
+                          aria-hidden="true"
+                          className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-2"
+                        />
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-3">
                           <h4 className="text-sm md:text-base font-semibold">
@@ -211,7 +221,8 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                         )}
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </motion.div>
             )}

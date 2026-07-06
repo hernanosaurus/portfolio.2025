@@ -11,7 +11,7 @@ interface LinkProps {
 export default function Link({
   href,
   children,
-  className = 'chrome-link focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded-xs group',
+  className = 'chrome-link inline-flex items-center gap-1 align-middle focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded-xs group',
   ariaLabel,
 }: LinkProps) {
   const controls = useAnimation();
@@ -46,15 +46,19 @@ export default function Link({
       onFocus={handleHoverStart}
       onBlur={handleHoverEnd}
     >
-      <span className="flex items-center gap-1 align-middle">
-        {children}
-        <motion.span
-          className="inline-block text-zinc-400 group-hover:text-brand-magenta-500 transition-colors"
-          animate={controls}
-        >
-          <ArrowRight className="w-4 h-4 align-middle" />
-        </motion.span>
-      </span>
+      {typeof children === 'string' ? (
+        <span className="chrome-link-text" data-text={children}>
+          {children}
+        </span>
+      ) : (
+        children
+      )}
+      <motion.span
+        className="inline-block text-zinc-400 group-hover:text-brand-magenta-500 transition-colors"
+        animate={controls}
+      >
+        <ArrowRight className="w-4 h-4 align-middle" />
+      </motion.span>
     </a>
   );
 }
