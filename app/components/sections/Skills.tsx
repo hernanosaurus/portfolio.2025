@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Skills as SkillsType } from '../../data/skills';
 import { sectionContainer, sectionItem } from '../../lib/motion';
@@ -40,8 +41,15 @@ const variantStyles: Record<
   },
 };
 
-function durationForCount(count: number): string {
-  return `${Math.max(30, Math.min(80, count * 2.5))}s`;
+function durationForCount(count: number): number {
+  return Math.max(30, Math.min(80, count * 2.5));
+}
+
+function copiesForCount(count: number): number {
+  if (count >= 16) return 2;
+  if (count >= 10) return 3;
+  if (count >= 6) return 4;
+  return 6;
 }
 
 export default function Skills({ skills }: SkillsProps) {
@@ -106,34 +114,190 @@ export default function Skills({ skills }: SkillsProps) {
                   ))}
                 </ul>
               ) : (
-                <div className="marquee-fade overflow-hidden">
-                  <ul
-                    aria-label={`${category} skills`}
-                    className={`marquee-track ${reverse ? 'marquee-track-reverse' : ''}`}
-                    style={
-                      {
-                        '--marquee-duration': durationForCount(items.length),
-                      } as React.CSSProperties
-                    }
-                  >
-                    {items.map((skill) => (
-                      <li key={skill} className="px-1.5 shrink-0">
-                        <SkillPill styles={styles}>{skill}</SkillPill>
-                      </li>
-                    ))}
-                    {items.map((skill) => (
-                      <li key={`${skill}-dup`} aria-hidden="true" className="px-1.5 shrink-0">
-                        <SkillPill styles={styles}>{skill}</SkillPill>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <MarqueeRow
+                  category={category}
+                  items={items}
+                  styles={styles}
+                  reverse={reverse}
+                />
               )}
             </motion.div>
           );
         })}
       </motion.div>
     </section>
+  );
+}
+
+function MarqueeRow({
+  category,
+  items,
+  styles,
+  reverse,
+}: {
+  category: string;
+  items: string[];
+  styles: (typeof variantStyles)[Variant];
+  reverse: boolean;
+}) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLUListElement | null>(null);
+  const copies = copiesForCount(items.length);
+  const duration = durationForCount(items.length);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    const track = trackRef.current;
+    if (!el || !track) return;
+
+    let period = 0;
+    const measure = () => {
+      period = track.scrollWidth / copies;
+    };
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(track);
+
+    if (period > 0) el.scrollLeft = period;
+
+    let dragging = false;
+    let paused = false;
+    let idleTimeout: ReturnType<typeof setTimeout> | null = null;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let pointerId: number | null = null;
+    let moved = false;
+    let lastTs = 0;
+    let raf = 0;
+
+    const pauseAuto = (idle = false) => {
+      paused = true;
+      if (idle) {
+        if (idleTimeout) clearTimeout(idleTimeout);
+        idleTimeout = setTimeout(() => {
+          if (!dragging) paused = false;
+        }, 1500);
+      }
+    };
+
+    const wrap = () => {
+      if (period <= 0) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (el.scrollLeft >= maxScroll - 1) el.scrollLeft -= period;
+      else if (el.scrollLeft <= 1) el.scrollLeft += period;
+    };
+
+    const tick = (ts: number) => {
+      if (!lastTs) lastTs = ts;
+      const dt = ts - lastTs;
+      lastTs = ts;
+      if (!paused && !dragging && period > 0) {
+        const pxPerMs = period / (duration * 1000);
+        el.scrollLeft += (reverse ? -1 : 1) * pxPerMs * dt;
+        wrap();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const handleWheel = () => pauseAuto(true);
+    const handleFocusIn = () => pauseAuto(true);
+    const handleMouseEnter = () => (paused = true);
+    const handleMouseLeave = () => {
+      if (!dragging) paused = false;
+    };
+
+    const handlePointerDown = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.pointerType === 'mouse') e.preventDefault();
+      dragging = true;
+      paused = true;
+      moved = false;
+      startX = e.clientX;
+      startScrollLeft = el.scrollLeft;
+      pointerId = e.pointerId;
+      el.dataset.dragging = 'true';
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {}
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      el.scrollLeft = startScrollLeft - dx;
+      wrap();
+    };
+
+    const endDrag = (e: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      delete el.dataset.dragging;
+      if (pointerId !== null) {
+        try {
+          el.releasePointerCapture(pointerId);
+        } catch {}
+        pointerId = null;
+      }
+      if (moved) {
+        e.preventDefault();
+        const swallowClick = (evt: Event) => {
+          evt.stopPropagation();
+          evt.preventDefault();
+        };
+        el.addEventListener('click', swallowClick, { capture: true, once: true });
+        setTimeout(() => el.removeEventListener('click', swallowClick, { capture: true }), 0);
+      }
+      pauseAuto(true);
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: true });
+    el.addEventListener('focusin', handleFocusIn);
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+    el.addEventListener('pointerdown', handlePointerDown);
+    el.addEventListener('pointermove', handlePointerMove);
+    el.addEventListener('pointerup', endDrag);
+    el.addEventListener('pointercancel', endDrag);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+      el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('focusin', handleFocusIn);
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+      el.removeEventListener('pointerdown', handlePointerDown);
+      el.removeEventListener('pointermove', handlePointerMove);
+      el.removeEventListener('pointerup', endDrag);
+      el.removeEventListener('pointercancel', endDrag);
+      if (idleTimeout) clearTimeout(idleTimeout);
+    };
+  }, [copies, duration, reverse]);
+
+  return (
+    <div
+      ref={scrollRef}
+      className="marquee-fade marquee-scroll"
+      role="region"
+      aria-label={`${category} skills, scrollable`}
+      tabIndex={0}
+    >
+      <ul ref={trackRef} aria-label={`${category} skills`} className="marquee-track">
+        {Array.from({ length: copies }).map((_, copyIndex) =>
+          items.map((skill) => (
+            <li
+              key={`${skill}-${copyIndex}`}
+              aria-hidden={copyIndex > 0 ? 'true' : undefined}
+              className="px-1.5 shrink-0"
+            >
+              <SkillPill styles={styles}>{skill}</SkillPill>
+            </li>
+          )),
+        )}
+      </ul>
+    </div>
   );
 }
 

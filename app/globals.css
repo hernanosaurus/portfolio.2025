@@ -194,25 +194,11 @@
   .marquee-track {
     display: flex;
     width: max-content;
-    animation-name: marquee-left;
-    animation-duration: var(--marquee-duration, 40s);
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    will-change: transform;
-  }
-
-  .marquee-track-reverse {
-    animation-name: marquee-right;
   }
 
   .marquee-container {
     content-visibility: auto;
     contain-intrinsic-size: auto 60px;
-  }
-
-  .marquee-container:hover .marquee-track,
-  .marquee-container:focus-within .marquee-track {
-    animation-play-state: paused;
   }
 
   .marquee-fade {
@@ -224,6 +210,38 @@
       transparent 100%
     );
     mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .marquee-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    touch-action: pan-x;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .marquee-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marquee-scroll[data-dragging] {
+    cursor: grabbing;
+  }
+
+  .marquee-scroll[data-dragging] .marquee-track,
+  .marquee-scroll[data-dragging] li,
+  .marquee-scroll[data-dragging] a,
+  .marquee-scroll[data-dragging] span {
+    pointer-events: none;
+  }
+
+  .marquee-scroll:focus-visible {
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    outline-offset: 4px;
   }
 
   .scanlines {
@@ -323,29 +341,8 @@
   }
 }
 
-@keyframes marquee-left {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes marquee-right {
-  from {
-    transform: translate3d(-50%, 0, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track,
-  .marquee-track-reverse {
-    animation: none !important;
-    transform: none !important;
+  .marquee-track {
     flex-wrap: wrap;
     width: 100%;
   }
