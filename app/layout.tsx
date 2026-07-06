@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -12,9 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'Nani | Keyboard for Hire',
-  description: 'Frontend Engineer creating clean, modern, and accessible web experiences.',
+  title: 'Nani Terania | hernanosaurus | Keyboard for Hire',
+  description:
+    'Frontend Engineer building the front half of ambitious web things. Clean, fast, and alive. Available remotely.',
 };
 
 export default function RootLayout({
@@ -28,7 +35,7 @@ export default function RootLayout({
         <title>Nani Terania | hernanosaurus | Keyboard for Hire</title>
         <meta
           name="description"
-          content="Nani Terania (hernanosaurus) – Frontend Engineer creating clean, modern, and accessible web experiences."
+          content="Frontend Engineer building the front half of ambitious web things. Clean, fast, and alive. Available remotely."
         />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png" />
@@ -41,12 +48,12 @@ export default function RootLayout({
         <meta name="author" content="Nani Terania" />
         <meta
           name="keywords"
-          content="Nani Terania, hernanosaurus, Frontend Engineer, Frontend Developer, Portfolio, React, TypeScript, JavaScript, Web Development, UI, UX, Tailwind"
+          content="Nani Terania, hernanosaurus, Frontend Engineer, Frontend Developer, Portfolio, React, TypeScript, JavaScript, Next.js, Framer Motion, creative developer, remote, Tailwind"
         />
         <meta property="og:title" content="Nani Terania | hernanosaurus | Keyboard for Hire" />
         <meta
           property="og:description"
-          content="Nani Terania (hernanosaurus) – Frontend Engineer creating clean, modern, and accessible web experiences."
+          content="Frontend Engineer building the front half of ambitious web things. Clean, fast, and alive. Available remotely."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hernanosaurus.dev/" />
@@ -58,7 +65,7 @@ export default function RootLayout({
         <meta name="twitter:title" content="Nani Terania | hernanosaurus | Keyboard for Hire" />
         <meta
           name="twitter:description"
-          content="Nani Terania (hernanosaurus) – Frontend Engineer creating clean, modern, and accessible web experiences."
+          content="Frontend Engineer building the front half of ambitious web things. Clean, fast, and alive. Available remotely."
         />
         <meta name="twitter:image" content="https://hernanosaurus.dev/og-image.png" />
         <script
@@ -72,6 +79,8 @@ export default function RootLayout({
               url: 'https://hernanosaurus.dev/',
               logo: 'https://hernanosaurus.dev/favicon.svg',
               image: 'https://hernanosaurus.dev/og-image.png',
+              description:
+                'Frontend Engineer building the front half of ambitious web things. Clean, fast, and alive. Available remotely.',
               jobTitle: 'Frontend Engineer',
               sameAs: [
                 'https://github.com/hernanosaurus',
@@ -81,7 +90,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

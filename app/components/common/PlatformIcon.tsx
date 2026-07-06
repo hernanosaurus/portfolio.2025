@@ -3,7 +3,6 @@ import { Platform } from '../../data/projects';
 
 interface PlatformIconProps {
   platform: Platform;
-  className?: string;
   showLabel?: boolean;
 }
 
@@ -11,83 +10,62 @@ const ICON_SIZE = 14;
 
 const platformConfig = {
   [Platform.Desktop]: {
-    label: 'Desktop',
+    label: 'DESKTOP',
     ariaLabel: 'Desktop platform only',
+    pillClasses: 'bg-sky-950/60 border-sky-700/50 text-sky-400',
   },
   [Platform.Mobile]: {
-    label: 'Mobile App',
+    label: 'MOBILE APP',
     ariaLabel: 'Mobile app',
+    pillClasses: 'bg-violet-950/60 border-violet-700/50 text-violet-400',
   },
   [Platform.Both]: {
-    label: 'Responsive',
+    label: 'RESPONSIVE',
     ariaLabel: 'Responsive design - works on all devices',
+    pillClasses: 'bg-emerald-950/60 border-emerald-700/50 text-emerald-400',
   },
 };
 
-export default function PlatformIcon({ platform, className = '', showLabel = true }: PlatformIconProps) {
+const pillBase =
+  'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-mono tracking-widest uppercase whitespace-nowrap flex-shrink-0 border';
+
+export default function PlatformIcon({ platform, showLabel = true }: PlatformIconProps) {
   const config = platformConfig[platform];
 
   if (!config) return null;
 
-  const baseClasses = `inline-flex items-center gap-1.5 ${className}`;
-
-  // Desktop only (not responsive)
   if (platform === Platform.Desktop) {
     return (
-      <span
-        className={baseClasses}
-        aria-label={config.ariaLabel}
-        role="img"
-      >
-        <Monitor
-          size={ICON_SIZE}
-          strokeWidth={2}
-          aria-hidden="true"
-        />
-        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
+      <span className={`${pillBase} ${config.pillClasses}`} aria-label={config.ariaLabel} role="img">
+        <Monitor size={ICON_SIZE} strokeWidth={2} aria-hidden="true" />
+        {showLabel && (
+          <span aria-hidden="true">{config.label}</span>
+        )}
       </span>
     );
   }
 
-  // Mobile app (native)
   if (platform === Platform.Mobile) {
     return (
-      <span
-        className={baseClasses}
-        aria-label={config.ariaLabel}
-        role="img"
-      >
-        <Smartphone
-          size={ICON_SIZE}
-          strokeWidth={2}
-          aria-hidden="true"
-        />
-        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
+      <span className={`${pillBase} ${config.pillClasses}`} aria-label={config.ariaLabel} role="img">
+        <Smartphone size={ICON_SIZE} strokeWidth={2} aria-hidden="true" />
+        {showLabel && (
+          <span aria-hidden="true">{config.label}</span>
+        )}
       </span>
     );
   }
 
-  // Responsive (works on all devices)
   if (platform === Platform.Both) {
     return (
-      <span
-        className={baseClasses}
-        aria-label={config.ariaLabel}
-        role="img"
-      >
+      <span className={`${pillBase} ${config.pillClasses}`} aria-label={config.ariaLabel} role="img">
         <span className="inline-flex items-center gap-0.5" aria-hidden="true">
-          <Monitor
-            size={ICON_SIZE}
-            strokeWidth={2}
-            aria-hidden="true"
-          />
-          <Smartphone
-            size={ICON_SIZE}
-            strokeWidth={2}
-            aria-hidden="true"
-          />
+          <Monitor size={ICON_SIZE} strokeWidth={2} aria-hidden="true" />
+          <Smartphone size={ICON_SIZE} strokeWidth={2} aria-hidden="true" />
         </span>
-        {showLabel && <span className="hidden sm:inline text-xs" aria-hidden="true">{config.label}</span>}
+        {showLabel && (
+          <span aria-hidden="true">{config.label}</span>
+        )}
       </span>
     );
   }

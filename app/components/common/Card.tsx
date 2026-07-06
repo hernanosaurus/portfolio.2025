@@ -1,11 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { Project } from '../../data/projects';
-import Tag from './Tag';
+import { MobilePlatform, Project } from '../../data/projects';
 import Link from './Link';
 import PlatformIcon from './PlatformIcon';
+import Tag from './Tag';
 
 interface CardProps {
   project: Project;
@@ -13,8 +14,17 @@ interface CardProps {
   onInView?: (isInView: boolean) => void;
 }
 
+function tagVariant(tech: string): 'default' | 'mobile-os' {
+  return tech === MobilePlatform.Android || tech === MobilePlatform.iOS ? 'mobile-os' : 'default';
+}
+
 export default function Card({ project, isActive = false, onInView }: CardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const shouldReduce = useReducedMotion();
+  const hasProducts = Boolean(project.products && project.products.length > 0);
+  const [isOpen, setIsOpen] = useState(hasProducts ? (project.products!.length < 4) : false);
+
+  const productsId = 'products-' + project.name.toLowerCase().replace(/\s+/g, '-');
 
   useEffect(() => {
     if (!onInView) return;
@@ -24,9 +34,9 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
         onInView(entry.isIntersecting);
       },
       {
-        threshold: 0.3, // Trigger when 30% of the card is visible
-        rootMargin: '0px', // No margin - detect all cards equally
-      }
+        threshold: 0.3,
+        rootMargin: '0px',
+      },
     );
 
     const currentCard = cardRef.current;
@@ -44,103 +54,180 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
   return (
     <motion.article
       ref={cardRef}
-      className={`rounded-lg border bg-gradient-to-br from-zinc-900 to-zinc-800 p-4 md:p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-orange-400 ${
-        isActive ? 'border-orange-400 shadow-lg' : 'border-zinc-800'
+      className={`group relative rounded-xl border bg-zinc-900/80 p-4 md:p-5 shadow-none transition-all duration-300 hover:bg-zinc-900 ${
+        isActive
+          ? 'chrome-border shadow-[0_0_20px_-4px_rgba(255,46,159,0.35)]'
+          : 'border-zinc-800 hover:border-zinc-600'
       }`}
     >
-      <div className="flex items-start sm:items-center justify-between gap-3 mb-2">
-        <h3 className="text-lg md:text-xl font-bold">
-          {project.link ? (
-            <Link
-              href={project.link}
-              ariaLabel={`Visit project: ${project.name}`}
-              className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors"
-            >
-              {project.name}
-            </Link>
-          ) : (
-            <span className="text-zinc-100">{project.name}</span>
-          )}
-        </h3>
-        {project.platform && (
-          <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-zinc-800/50 border border-zinc-700 text-zinc-400 text-xs whitespace-nowrap flex-shrink-0">
-            <PlatformIcon platform={project.platform} className="text-zinc-400" />
-          </span>
-        )}
-      </div>
-      <p className="mb-2 text-zinc-300 text-sm md:text-base">{project.description}</p>
-      {project.products && (
-        <div className="mb-2 pl-4 border-l border-zinc-700">
-          {project.products.map((prod) => (
-            <div key={prod.name} className="mb-4">
-              <div className="flex items-start sm:items-center justify-between gap-3 mb-2">
-                <h4 className="text-base md:text-lg font-semibold">
-                  {prod.link ? (
-                    <Link
-                      href={prod.link}
-                      ariaLabel={`Visit product: ${prod.name}`}
-                      className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors"
-                    >
-                      {prod.name}
-                    </Link>
-                  ) : (
-                    <span className="text-zinc-100">{prod.name}</span>
-                  )}
-                </h4>
-                {prod.platform && (
-                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700 text-zinc-400 text-xs whitespace-nowrap flex-shrink-0">
-                    <PlatformIcon platform={prod.platform} className="text-zinc-400" />
-                  </span>
-                )}
-              </div>
-              <p className="text-zinc-400 text-xs md:text-sm mb-2">{prod.description}</p>
-              {prod.tech && (
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {prod.tech.map((tech) => (
-                    <Tag key={tech} className="text-xs sm:text-sm px-1.5 py-1">{tech}</Tag>
-                  ))}
-                </div>
+      {isActive && (
+        <span
+          aria-hidden="true"
+          className="absolute top-0 right-0 w-4 h-4 rounded-tr-xl"
+          style={{
+            background:
+              'linear-gradient(225deg, var(--color-brand-magenta-500) 0%, transparent 60%)',
+          }}
+        />
+      )}
+      {!hasProducts ? (
+        <>
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-lg md:text-xl font-bold">
+              {project.link ? (
+                <Link
+                  href={project.link}
+                  ariaLabel={`Visit project: ${project.name}`}
+                  className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
+                >
+                  {project.name}
+                </Link>
+              ) : (
+                <span className="text-zinc-100">{project.name}</span>
               )}
-              {prod.related && prod.related.length > 0 && (
-                <div className="mt-2 ml-2 border-l-2 border-dashed border-zinc-700 pl-3">
-                  <div className="text-xs md:text-sm text-zinc-400 mb-1 font-semibold">Related:</div>
-                  {prod.related.map((rel) => (
-                    <div key={rel.name} className="mb-2">
-                      <div className="flex items-start sm:items-center justify-between gap-3 mb-1">
-                        <div>
-                          {rel.link ? (
-                            <Link
-                              href={rel.link}
-                              ariaLabel={`Visit related product: ${rel.name}`}
-                              className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group text-base md:text-lg font-semibold"
-                            >
-                              {rel.name}
-                            </Link>
-                          ) : (
-                            <span className="text-zinc-100 text-base md:text-lg font-semibold">{rel.name}</span>
-                          )}
+            </h3>
+            {project.platform && <PlatformIcon platform={project.platform} />}
+          </div>
+          <p className="mt-1 text-sm md:text-base text-zinc-300 leading-relaxed">{project.description}</p>
+          {project.tech && (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.tech.map((tech) => (
+                <Tag key={tech} variant={tagVariant(tech)}>{tech}</Tag>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <button
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-expanded={isOpen}
+            aria-controls={productsId}
+            className="w-full text-left min-h-11 flex items-start justify-between gap-3 focus-visible:outline-2 focus-visible:outline-orange-400 rounded"
+          >
+            <h3 className="text-lg md:text-xl font-bold">
+              {project.link ? (
+                <span onClick={(e) => e.stopPropagation()}>
+                  <Link
+                    href={project.link}
+                    ariaLabel={`Visit project: ${project.name}`}
+                    className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
+                  >
+                    {project.name}
+                  </Link>
+                </span>
+              ) : (
+                <span className="text-zinc-100">{project.name}</span>
+              )}
+            </h3>
+            <div className="flex items-center gap-2 shrink-0">
+              {project.platform && <PlatformIcon platform={project.platform} />}
+              <span
+                aria-hidden="true"
+                className="text-[10px] font-mono text-zinc-500 bg-zinc-800/60 border border-zinc-700 px-1.5 py-0.5 rounded whitespace-nowrap"
+              >
+                {project.products!.length} products
+              </span>
+              <motion.span
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: shouldReduce ? 0 : 0.2 }}
+                className="inline-flex text-zinc-500"
+              >
+                <ChevronDown aria-hidden="true" className="w-4 h-4" />
+              </motion.span>
+            </div>
+          </button>
+
+          <p className="mt-1 text-sm md:text-base text-zinc-400 leading-relaxed">{project.description}</p>
+
+          <AnimatePresence initial={false}>
+            {isOpen && (
+              <motion.div
+                id={productsId}
+                key="products"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: shouldReduce ? 0 : 0.25, ease: 'easeInOut' }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="mt-3 pt-3 border-t border-zinc-800/80">
+                  {project.products!.map((prod) => (
+                    <div
+                      key={prod.name}
+                      className="flex gap-3 pb-3 mb-3 border-b border-zinc-800/50 last:border-b-0 last:mb-0 last:pb-0"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-1.5"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-3">
+                          <h4 className="text-sm md:text-base font-semibold">
+                            {prod.link ? (
+                              <Link
+                                href={prod.link}
+                                ariaLabel={`Visit product: ${prod.name}`}
+                                className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
+                              >
+                                {prod.name}
+                              </Link>
+                            ) : (
+                              <span className="text-zinc-100">{prod.name}</span>
+                            )}
+                          </h4>
+                          {prod.platform && <PlatformIcon platform={prod.platform} />}
                         </div>
-                        {rel.platform && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700 text-zinc-400 text-xs whitespace-nowrap flex-shrink-0">
-                            <PlatformIcon platform={rel.platform} className="text-zinc-400" />
-                          </span>
+                        <p className="mt-0.5 text-xs md:text-sm text-zinc-500 leading-relaxed">{prod.description}</p>
+                        {prod.tech && (
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {prod.tech.map((tech) => (
+                              <Tag key={tech} variant={tagVariant(tech)}>{tech}</Tag>
+                            ))}
+                          </div>
+                        )}
+                        {prod.related && prod.related.length > 0 && (
+                          <div className="mt-1.5 flex flex-wrap gap-1.5">
+                            {prod.related.map((rel) => (
+                              <span
+                                key={rel.name}
+                                title={rel.description}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-zinc-700 bg-zinc-800/40 text-[10px] font-mono text-zinc-400 tracking-wide"
+                              >
+                                <span aria-hidden="true">↳</span>
+                                {rel.link ? (
+                                  <Link
+                                    href={rel.link}
+                                    ariaLabel={`Visit related product: ${rel.name}`}
+                                    className="text-orange-400 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 rounded-xs"
+                                  >
+                                    {rel.name}
+                                  </Link>
+                                ) : (
+                                  <span className="text-zinc-300">{rel.name}</span>
+                                )}
+                                {rel.platform && <PlatformIcon platform={rel.platform} />}
+                              </span>
+                            ))}
+                          </div>
                         )}
                       </div>
-                      <div className="text-zinc-400 text-xs md:text-sm mt-0.5">{rel.description}</div>
                     </div>
                   ))}
                 </div>
-              )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {project.tech && (
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.tech.map((tech) => (
+                <Tag key={tech} variant={tagVariant(tech)}>{tech}</Tag>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
-      {project.tech && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <Tag key={tech} className="text-xs sm:text-sm px-1.5 py-1">{tech}</Tag>
-          ))}
-        </div>
+          )}
+        </>
       )}
     </motion.article>
   );
