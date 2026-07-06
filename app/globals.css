@@ -94,6 +94,24 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .chrome-link {
+    background-image: var(--gradient-chrome);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 200ms ease-out;
+  }
+
+  .chrome-link:hover,
+  .chrome-link:focus-visible {
+    text-decoration-color: var(--color-brand-magenta-500);
+  }
+
   .chrome-bg {
     background-image: var(--gradient-chrome);
   }

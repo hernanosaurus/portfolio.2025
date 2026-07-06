@@ -78,7 +78,6 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                 <Link
                   href={project.link}
                   ariaLabel={`Visit project: ${project.name}`}
-                  className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
                 >
                   {project.name}
                 </Link>
@@ -104,7 +103,7 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls={productsId}
-            className="w-full text-left min-h-11 flex items-start justify-between gap-3 focus-visible:outline-2 focus-visible:outline-orange-400 rounded"
+            className="w-full text-left min-h-11 flex items-start justify-between gap-3 focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded"
           >
             <h3 className="text-lg md:text-xl font-bold">
               {project.link ? (
@@ -112,7 +111,6 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                   <Link
                     href={project.link}
                     ariaLabel={`Visit project: ${project.name}`}
-                    className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
                   >
                     {project.name}
                   </Link>
@@ -169,7 +167,6 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                               <Link
                                 href={prod.link}
                                 ariaLabel={`Visit product: ${prod.name}`}
-                                className="text-orange-400 underline underline-offset-2 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:bg-orange-950/20 transition-colors group"
                               >
                                 {prod.name}
                               </Link>
@@ -200,7 +197,7 @@ export default function Card({ project, isActive = false, onInView }: CardProps)
                                   <Link
                                     href={rel.link}
                                     ariaLabel={`Visit related product: ${rel.name}`}
-                                    className="text-orange-400 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-orange-400 rounded-xs"
+                                    className="text-zinc-200 hover:text-brand-magenta-500 focus-visible:outline-2 focus-visible:outline-brand-magenta-500 rounded-xs transition-colors"
                                   >
                                     {rel.name}
                                   </Link>

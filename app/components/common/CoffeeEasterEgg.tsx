@@ -1,7 +1,18 @@
 'use client';
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
+import { useCoffee } from '../../lib/coffee';
+
+const NOOP_SUBSCRIBE = () => () => {};
+function useIsMounted() {
+  return useSyncExternalStore(
+    NOOP_SUBSCRIBE,
+    () => true,
+    () => false,
+  );
+}
 
 interface CoffeeEasterEggProps {
   children: React.ReactNode;
@@ -15,7 +26,6 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-const STORAGE_KEY = 'nani:coffee-count';
 const MILESTONES_KEY = 'nani:coffee-milestones';
 const TOOLTIP_HOLD_MS = 2000;
 const CURSOR_HOLD_MS = 600;
@@ -103,13 +113,7 @@ function loadShownMilestones(): Set<number> {
 
 export default function CoffeeEasterEgg({ children }: CoffeeEasterEggProps) {
   const shouldReduce = useReducedMotion();
-  const [count, setCount] = useState<number>(() => {
-    if (typeof window === 'undefined') return 0;
-    const stored = window.sessionStorage.getItem(STORAGE_KEY);
-    if (!stored) return 0;
-    const parsed = parseInt(stored, 10);
-    return !isNaN(parsed) && parsed > 0 ? parsed : 0;
-  });
+  const { count, increment } = useCoffee();
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [steamKey, setSteamKey] = useState(0);
   const [cursorActive, setCursorActive] = useState(false);
@@ -157,11 +161,7 @@ export default function CoffeeEasterEgg({ children }: CoffeeEasterEggProps) {
   }, []);
 
   function handleClick() {
-    const next = count + 1;
-    setCount(next);
-    if (typeof window !== 'undefined') {
-      window.sessionStorage.setItem(STORAGE_KEY, String(next));
-    }
+    const next = increment();
     const text = copyForCount(next);
     setLiveText(text);
     if (liveClearTimerRef.current) clearTimeout(liveClearTimerRef.current);
@@ -280,6 +280,7 @@ function CoffeeConsole({ milestone, count, onClose }: CoffeeConsoleProps) {
   const shouldReduce = useReducedMotion();
   const closeRef = useRef<HTMLButtonElement>(null);
   const lastFocusRef = useRef<Element | null>(null);
+  const mounted = useIsMounted();
 
   useEffect(() => {
     if (milestone === null) return;
@@ -306,7 +307,9 @@ function CoffeeConsole({ milestone, count, onClose }: CoffeeConsoleProps) {
 
   const copy = milestone !== null ? windowCopyForCount(milestone) : null;
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {milestone !== null && copy && (
         <motion.div
@@ -384,6 +387,7 @@ function CoffeeConsole({ milestone, count, onClose }: CoffeeConsoleProps) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

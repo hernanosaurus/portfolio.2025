@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef } from 'react';
 import Download from '../common/Download';
 import CoffeeEasterEgg from '../common/CoffeeEasterEgg';
+import CoffeeLog from './CoffeeLog';
 import { motionProps } from '../../lib/motion';
 
 const IDLE_WEIGHT = 500;
@@ -134,6 +135,7 @@ export default function Hero() {
         className="scanlines pointer-events-none absolute inset-0 z-0"
       />
       <SocialRail />
+      <CoffeeLog />
 
       <motion.div
         style={
@@ -150,24 +152,34 @@ export default function Hero() {
           <span className="text-brand-cyan-400">◆</span> Portfolio · MMXXVI
         </motion.p>
 
-        <motion.h1
-          ref={nameRef}
-          {...motionProps(80, 500, shouldReduce ?? false)}
-          className="font-display chrome-text leading-[0.85] tracking-tight select-none"
-          style={{ fontSize: 'clamp(80px, 14vw, 220px)' }}
-        >
-          {shouldReduce ? (
-            <span
-              style={{
-                fontVariationSettings: `'wght' ${IDLE_WEIGHT}, 'wdth' ${IDLE_WIDTH}`,
-              }}
-            >
-              Nani
-            </span>
-          ) : (
-            <KineticName smoothWeight={smoothWeight} smoothWidth={smoothWidth} />
-          )}
-        </motion.h1>
+        <div className="relative">
+          <motion.span
+            {...motionProps(80, 500, shouldReduce ?? false)}
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 font-display font-bold outline-text leading-none tracking-tighter uppercase whitespace-nowrap overflow-hidden text-ellipsis"
+            style={{ fontSize: 'clamp(48px, 9vw, 160px)' }}
+          >
+            keyboard for hire
+          </motion.span>
+          <motion.h1
+            ref={nameRef}
+            {...motionProps(80, 500, shouldReduce ?? false)}
+            className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none"
+            style={{ fontSize: 'clamp(80px, 14vw, 220px)' }}
+          >
+            {shouldReduce ? (
+              <span
+                style={{
+                  fontVariationSettings: `'wght' ${IDLE_WEIGHT}, 'wdth' ${IDLE_WIDTH}`,
+                }}
+              >
+                Nani
+              </span>
+            ) : (
+              <KineticName smoothWeight={smoothWeight} smoothWidth={smoothWidth} />
+            )}
+          </motion.h1>
+        </div>
 
         <motion.p
           {...motionProps(160, 400, shouldReduce ?? false)}
@@ -191,28 +203,12 @@ export default function Hero() {
           <span aria-hidden="true" className="text-zinc-700">
             {'//'}
           </span>
-          <span>Remote / Earth</span>
+          <span>Remote</span>
           <span aria-hidden="true" className="text-zinc-700">
             {'//'}
           </span>
           <span className="text-brand-magenta-400">Open to work</span>
         </motion.p>
-
-        <motion.div
-          {...motionProps(300, 400, shouldReduce ?? false)}
-          className="relative inline-flex mt-4 self-start"
-        >
-          <span
-            aria-hidden="true"
-            className={`absolute -inset-1.5 rounded-full chrome-bg-conic opacity-70 blur-[2px] ${
-              shouldReduce ? '' : 'animate-[spin_6s_linear_infinite]'
-            }`}
-          />
-          <span className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black border border-zinc-800 font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-zinc-100">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-magenta-500 animate-pulse" />
-            keyboard for hire
-          </span>
-        </motion.div>
 
         <motion.p
           {...motionProps(400, 450, shouldReduce ?? false)}
