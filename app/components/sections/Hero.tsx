@@ -10,8 +10,6 @@ import {
 } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Download from '../common/Download';
-import CoffeeEasterEgg from '../common/CoffeeEasterEgg';
-import CoffeeLog from './CoffeeLog';
 import { motionProps } from '../../lib/motion';
 
 const IDLE_WEIGHT = 500;
@@ -136,7 +134,6 @@ export default function Hero() {
         className="scanlines pointer-events-none absolute inset-0 z-0"
       />
       <SocialRail />
-      <CoffeeLog recessed={nameHovered} />
 
       <motion.div
         style={
@@ -246,8 +243,7 @@ export default function Hero() {
           className="max-w-2xl text-base md:text-xl leading-relaxed text-zinc-300 mt-6 font-sans"
         >
           I build the front half of ambitious web things — clean, fast, and alive. Based remotely,
-          running on <CoffeeEasterEgg>coffee</CoffeeEasterEgg> and strong opinions about component
-          architecture.
+          running on strong opinions about component architecture.
         </motion.p>
 
         <motion.div

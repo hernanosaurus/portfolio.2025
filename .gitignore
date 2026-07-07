@@ -40,6 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# claude code — local settings only; shared agents/commands/docs stay tracked
-.claude/settings.local.json
-.claude/docs/notes/
+# claude code
+.claude/
+CLAUDE.md
