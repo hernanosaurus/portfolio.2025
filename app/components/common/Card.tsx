@@ -124,24 +124,12 @@ export default function Card({ project, defaultActive = false }: CardProps) {
                 style={{ overflow: 'hidden' }}
               >
                 <div className="mt-3 pt-3 border-t border-zinc-800/80">
-                  {project.products!.map((prod) => {
-                    const bulletPlatform = prod.platform ?? project.platform;
-                    return (
+                  {project.products!.map((prod) => (
                     <div
                       key={prod.name}
-                      className="flex gap-3 pb-3 mb-3 border-b border-zinc-800/50 last:border-b-0 last:mb-0 last:pb-0"
+                      className="pb-3 mb-3 border-b border-zinc-800/50 last:border-b-0 last:mb-0 last:pb-0"
                     >
-                      {bulletPlatform ? (
-                        <span className="shrink-0 leading-6 md:leading-7">
-                          <PlatformIcon platform={bulletPlatform} variant="bullet" />
-                        </span>
-                      ) : (
-                        <span
-                          aria-hidden="true"
-                          className="w-1.5 h-1.5 rounded-full bg-zinc-600 shrink-0 mt-2"
-                        />
-                      )}
-                      <div className="flex-1 min-w-0">
+                      <div className="min-w-0">
                         <div className="flex items-start justify-between gap-3">
                           <h4 className="text-sm md:text-base font-semibold">
                             {prod.link ? (
@@ -192,8 +180,7 @@ export default function Card({ project, defaultActive = false }: CardProps) {
                         )}
                       </div>
                     </div>
-                    );
-                  })}
+                  ))}
                 </div>
               </motion.div>
             )}
