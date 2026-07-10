@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { MobilePlatform, Project } from '../../data/projects';
+import { MobilePlatform, Platform, Project } from '../../data/projects';
 import Link from './Link';
 import PlatformIcon from './PlatformIcon';
 import Tag from './Tag';
@@ -17,12 +17,20 @@ function tagVariant(tech: string): 'default' | 'mobile-os' {
   return tech === MobilePlatform.Android || tech === MobilePlatform.iOS ? 'mobile-os' : 'default';
 }
 
+const PLATFORM_ORDER: Platform[] = [Platform.Desktop, Platform.Both, Platform.Mobile];
+
 export default function Card({ project, defaultActive = false }: CardProps) {
   const shouldReduce = useReducedMotion();
   const hasProducts = Boolean(project.products && project.products.length > 0);
   const [isOpen, setIsOpen] = useState(hasProducts);
 
   const productsId = 'products-' + project.name.toLowerCase().replace(/\s+/g, '-');
+
+  const parentPlatforms: Platform[] = hasProducts
+    ? PLATFORM_ORDER.filter((p) => project.products!.some((prod) => prod.platform === p))
+    : project.platform
+      ? [project.platform]
+      : [];
 
   return (
     <motion.article
@@ -93,7 +101,9 @@ export default function Card({ project, defaultActive = false }: CardProps) {
               )}
             </h3>
             <div className="flex items-center gap-2 flex-wrap">
-              {project.platform && <PlatformIcon platform={project.platform} />}
+              {parentPlatforms.map((p) => (
+                <PlatformIcon key={p} platform={p} />
+              ))}
               <span
                 aria-hidden="true"
                 className="text-[10px] font-mono text-zinc-500 bg-zinc-800/60 border border-zinc-700 px-1.5 py-0.5 rounded whitespace-nowrap"

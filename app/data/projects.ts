@@ -123,12 +123,14 @@ export const projects: Project[] = [
         description:
           'I helped build the first iteration (MVP) of the Ad Library, laying the foundation for what the product has become today. The Ad Library is a searchable, curated database of successful ad creatives across industries. Users can browse, filter by format/industry, save boards of favorite ads for inspiration, and use these as input for new ad generation.',
         link: 'https://madgicx.com/ad-library',
+        platform: Platform.Desktop,
       },
       {
         name: 'AI Copywriter',
         description:
           'Built the frontend for the app, which is intended for desktop users. Users can input prompts, select tones, and instantly receive multiple creative text suggestions tailored for their campaigns. The core technology and workflows developed for AI Copywriter also powered the launch of the AI-Ads.',
         link: 'https://ai-copywriter.madgicx.com/',
+        platform: Platform.Desktop,
         related: [
           {
             name: 'AI-Ads',
@@ -141,6 +143,7 @@ export const projects: Project[] = [
         name: 'Sparkle',
         description:
           'An internal ticketing and creative request system empowering clients to easily submit design briefs and track progress for their ad creatives. I led the frontend development, building intuitive flows for ticket creation, status tracking, and designer collaboration. The UI is fast, modern, and tailored for seamless client–designer interaction.',
+        platform: Platform.Desktop,
       },
     ],
   },
@@ -155,11 +158,13 @@ export const projects: Project[] = [
         name: 'Registration Portal',
         description:
           'Developed user-facing interfaces for browsing, registering, and managing workshop enrolment.',
+        platform: Platform.Desktop,
       },
       {
         name: 'Admin Portal',
         description:
           'Built admin tools for managing workshop listings, registrations, waitlists, and attendance tracking.',
+        platform: Platform.Desktop,
       },
     ],
   },
@@ -201,11 +206,13 @@ export const projects: Project[] = [
         name: 'Enterprise Transportation Management Platform',
         description: 'Contributed to developing shipment tracking, analytics dashboards, and workflow features. Built modular UI components and optimized data-driven views for performance and maintainability.',
         tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.SCSS, Coding.TypeScript],
+        platform: Platform.Desktop,
       },
       {
         name: 'Shipping & Order Management Platform',
         description: 'Helped build core features like shipment creation, tracking, and order management. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
         tech: [LibrariesAndFrameworks.AngularJS, LibrariesAndFrameworks.NgRx, LibrariesAndFrameworks.Bootstrap, Coding.TypeScript],
+        platform: Platform.Desktop,
       },
     ],
   },
