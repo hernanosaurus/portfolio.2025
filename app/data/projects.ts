@@ -40,49 +40,64 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: 'Publishing Company',
+    name: 'CCTalent formerly CodingChiefs',
     description:
       'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
+    link: 'https://cctalent.global/en/',
     products: [
       {
-        name: 'Sports News and Live Updates App',
+        name: 'Mee met Oranje App',
         description:
           'Developed responsive authentication flows with social login and guest access, built real-time data visualizations for live games, scores, match schedules, and news features, implemented a push notification system to drive timely user engagement, and optimized cross-platform performance across iOS and Android.',
+        link: 'https://play.google.com/store/apps/details?id=com.meemetoranje.app',
         tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
         platform: Platform.Mobile,
       },
       {
-        name: 'Football Player Transfer App',
+        name: 'Football Transfers App',
         description:
           'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for performance.',
+        link: 'https://play.google.com/store/apps/details?id=com.footballtransfers.app',
         tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
         platform: Platform.Mobile,
       },
       {
-        name: 'Football Fan-site',
+        name: 'FCUpdate App',
         description:
-          'Led frontend development, translating Figma designs into a polished website. Integrated CMS for dynamic content and optimized for performance.',
+          'Developed the mobile companion to FCUpdate.nl, delivering live Dutch football news, match updates, and push notifications. Built with a shared React Native codebase for iOS and Android.',
+        link: 'https://play.google.com/store/apps/details?id=com.fcupdate.app',
+        tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
+        platform: Platform.Mobile,
+      },
+      {
+        name: 'Mee met Oranje',
+        description:
+          'Led frontend development, translating Figma designs into a polished website for the Dutch national football team fan community. Integrated CMS for dynamic content and optimized for performance.',
+        link: 'https://www.meemetoranje.nl/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
       },
       {
-        name: 'Football Fan Engagement Platform',
+        name: 'Anfield Watch',
         description:
-          'Built responsive UI and smooth user interactions for live content and community features. Focused on performance and accessibility.',
+          'Built responsive UI and smooth user interactions for live content and community features on this Liverpool FC fan platform. Focused on performance and accessibility.',
+        link: 'https://www.anfieldwatch.co.uk/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
       },
       {
-        name: 'Sports News Platform',
+        name: 'FCUpdate',
         description:
-          'Developed and maintained a high-traffic news portal, delivering live match updates, player injuries, results, and commentary.',
+          'Developed and maintained a high-traffic football news portal, delivering live match updates, player injuries, results, and commentary. Shipped in both Dutch (NL) and English (EN) localized versions.',
+        link: 'https://www.fcupdate.nl/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
       },
       {
-        name: 'Football Insights Portal',
+        name: 'Football Transfers',
         description:
-          'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards.',
+          'Enhanced a football analytics platform with real-time valuation models, transfer rumours, and interactive dashboards. Shipped in both Dutch (NL) and English (EN) localized versions.',
+        link: 'https://www.footballtransfers.com/en',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
       },

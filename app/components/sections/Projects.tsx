@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Project } from '../../data/projects';
 import Card from '../common/Card';
 import { sectionContainer, sectionItem } from '../../lib/motion';
@@ -11,8 +11,6 @@ interface ProjectsProps {
 }
 
 export default function Projects({ projects }: ProjectsProps) {
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-
   const linkedProjects = useMemo(
     () => projects.filter((p) => p.link || (p.products && p.products.some((prod) => prod.link))),
     [projects],
@@ -22,23 +20,6 @@ export default function Projects({ projects }: ProjectsProps) {
     () => projects.filter((p) => !p.link && !(p.products && p.products.some((prod) => prod.link))),
     [projects],
   );
-
-  const activeCardIndex = useMemo(() => {
-    if (visibleCards.size === 0) return null;
-    return Math.min(...visibleCards);
-  }, [visibleCards]);
-
-  const handleCardVisibility = useCallback((index: number, isVisible: boolean) => {
-    setVisibleCards((prev) => {
-      const newSet = new Set(prev);
-      if (isVisible) {
-        newSet.add(index);
-      } else {
-        newSet.delete(index);
-      }
-      return newSet;
-    });
-  }, []);
 
   return (
     <section className="w-full mt-12 md:mt-20 px-4 md:px-16 lg:px-24">
@@ -58,11 +39,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 variants={sectionItem}
                 className={featuredSpanClass(index)}
               >
-                <Card
-                  project={project}
-                  isActive={activeCardIndex === index}
-                  onInView={(isInView) => handleCardVisibility(index, isInView)}
-                />
+                <Card project={project} defaultActive={index === 0} />
               </motion.div>
             ))}
           </motion.div>
@@ -78,16 +55,9 @@ export default function Projects({ projects }: ProjectsProps) {
             viewport={{ once: true }}
             className="archive-columns"
           >
-            {unlinkedProjects.map((project, index) => (
+            {unlinkedProjects.map((project) => (
               <motion.div key={project.name} variants={sectionItem}>
-                <Card
-                  project={project}
-                  isActive={activeCardIndex === linkedProjects.length + index}
-                  onInView={(isInView) => {
-                    const cardIndex = linkedProjects.length + index;
-                    handleCardVisibility(cardIndex, isInView);
-                  }}
-                />
+                <Card project={project} />
               </motion.div>
             ))}
           </motion.div>

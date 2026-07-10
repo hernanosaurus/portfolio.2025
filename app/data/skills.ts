@@ -62,7 +62,9 @@ export enum Tool {
   AdobeIllustrator = 'Adobe Illustrator',
   OneSignal = 'One Signal',
   WebSockets = 'WebSockets',
-  MobileApp = 'Mobile App'
+  MobileApp = 'Mobile App',
+  ClaudeCode = 'Claude Code',
+  GitHubCopilot = 'GitHub Copilot',
 }
 
 export const skills: Skills = {
@@ -113,5 +115,7 @@ export const skills: Skills = {
     Tool.AdobeIllustrator,
     Tool.OneSignal,
     Tool.WebSockets,
+    Tool.ClaudeCode,
+    Tool.GitHubCopilot,
   ],
 };

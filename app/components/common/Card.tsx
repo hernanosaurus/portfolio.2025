@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { MobilePlatform, Project } from '../../data/projects';
 import Link from './Link';
 import PlatformIcon from './PlatformIcon';
@@ -10,66 +10,37 @@ import Tag from './Tag';
 
 interface CardProps {
   project: Project;
-  isActive?: boolean;
-  onInView?: (isInView: boolean) => void;
+  defaultActive?: boolean;
 }
 
 function tagVariant(tech: string): 'default' | 'mobile-os' {
   return tech === MobilePlatform.Android || tech === MobilePlatform.iOS ? 'mobile-os' : 'default';
 }
 
-export default function Card({ project, isActive = false, onInView }: CardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
+export default function Card({ project, defaultActive = false }: CardProps) {
   const shouldReduce = useReducedMotion();
   const hasProducts = Boolean(project.products && project.products.length > 0);
-  const [isOpen, setIsOpen] = useState(hasProducts ? (project.products!.length < 4) : false);
+  const [isOpen, setIsOpen] = useState(hasProducts);
 
   const productsId = 'products-' + project.name.toLowerCase().replace(/\s+/g, '-');
 
-  useEffect(() => {
-    if (!onInView) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        onInView(entry.isIntersecting);
-      },
-      {
-        threshold: 0.3,
-        rootMargin: '0px',
-      },
-    );
-
-    const currentCard = cardRef.current;
-    if (currentCard) {
-      observer.observe(currentCard);
-    }
-
-    return () => {
-      if (currentCard) {
-        observer.unobserve(currentCard);
-      }
-    };
-  }, [onInView]);
-
   return (
     <motion.article
-      ref={cardRef}
-      className={`group relative rounded-xl border bg-zinc-900/80 p-4 md:p-5 shadow-none transition-all duration-300 hover:bg-zinc-900 ${
-        isActive
-          ? 'chrome-border shadow-[0_0_20px_-4px_rgba(255,46,159,0.35)]'
-          : 'border-zinc-800 hover:border-zinc-600'
+      className={`group chrome-border-hover rounded-xl bg-zinc-900/80 p-4 md:p-5 shadow-none transition-colors duration-300 hover:bg-zinc-900${
+        defaultActive ? ' is-default-active' : ''
       }`}
     >
-      {isActive && (
-        <span
-          aria-hidden="true"
-          className="absolute top-0 right-0 w-4 h-4 rounded-tr-xl"
-          style={{
-            background:
-              'linear-gradient(225deg, var(--color-brand-magenta-500) 0%, transparent 60%)',
-          }}
-        />
-      )}
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute top-0 right-0 w-4 h-4 rounded-tr-xl transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 ${
+          defaultActive ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          background:
+            'linear-gradient(225deg, var(--color-brand-magenta-500) 0%, transparent 60%)',
+        }}
+      />
+
       {!hasProducts ? (
         <>
           <h3 className="text-lg md:text-xl font-bold">

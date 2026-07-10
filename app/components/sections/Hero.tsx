@@ -153,9 +153,14 @@ export default function Hero() {
         <motion.div
           {...motionProps(80, 500, shouldReduce ?? false)}
           className="relative"
+          onHoverStart={() => setNameHovered(true)}
+          onHoverEnd={() => setNameHovered(false)}
         >
-          <motion.span
-            aria-hidden="true"
+          <motion.a
+            href="https://keyboardforhire.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Keyboard for Hire — developer community"
             animate={
               shouldReduce
                 ? { opacity: nameHovered ? 0.95 : 0.5 }
@@ -168,11 +173,17 @@ export default function Hero() {
               opacity: { duration: 0.35, ease: 'easeOut' },
               scale: { type: 'spring' as const, stiffness: 180, damping: 22 },
             }}
-            className="pointer-events-none select-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 font-display font-bold outline-text-bold leading-none tracking-tight uppercase whitespace-nowrap origin-left"
-            style={{ fontSize: 'clamp(48px, 8vw, 140px)' }}
+            style={{
+              fontSize: 'clamp(48px, 8vw, 140px)',
+              pointerEvents: nameHovered ? 'auto' : 'none',
+              zIndex: nameHovered ? 20 : 0,
+            }}
+            onFocus={() => setNameHovered(true)}
+            onBlur={() => setNameHovered(false)}
+            className="select-none absolute inset-x-0 top-1/2 -translate-y-1/2 font-display font-bold outline-text-bold leading-none tracking-tight uppercase whitespace-nowrap origin-left cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
           >
             keyboard for hire
-          </motion.span>
+          </motion.a>
           <motion.h1
             ref={nameRef}
             animate={
@@ -187,13 +198,14 @@ export default function Hero() {
               opacity: { duration: 0.35, ease: 'easeOut' },
               scale: { type: 'spring' as const, stiffness: 180, damping: 22 },
             }}
-            onHoverStart={() => setNameHovered(true)}
-            onHoverEnd={() => setNameHovered(false)}
             onFocus={() => setNameHovered(true)}
             onBlur={() => setNameHovered(false)}
             tabIndex={0}
+            style={{
+              pointerEvents: nameHovered ? 'none' : 'auto',
+              fontSize: 'clamp(80px, 14vw, 220px)',
+            }}
             className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none cursor-default origin-left focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
-            style={{ fontSize: 'clamp(80px, 14vw, 220px)' }}
           >
             {shouldReduce ? (
               <span
@@ -242,8 +254,7 @@ export default function Hero() {
           {...motionProps(400, 450, shouldReduce ?? false)}
           className="max-w-2xl text-base md:text-xl leading-relaxed text-zinc-300 mt-6 font-sans"
         >
-          I build the front half of ambitious web things — clean, fast, and alive. Based remotely,
-          running on strong opinions about component architecture.
+          I&apos;m Nani — frontend engineer, remote-first, coffee-fueled, and here to build the better half of the web 🙂
         </motion.p>
 
         <motion.div

@@ -7,7 +7,7 @@ import Hero from './components/sections/Hero';
 import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import CursorBlob from './components/common/CursorBlob';
-import Nanibyte from './components/common/Nanibyte';
+import { Nanibyte } from 'nanibyte';
 import SectionMarker from './components/common/SectionMarker';
 import { DURATION, EASE } from './lib/motion';
 
@@ -28,7 +28,10 @@ export default function Home() {
         Skip to content
       </a>
       <CursorBlob />
-      <Nanibyte />
+      <Nanibyte
+        bodyColor="var(--color-brand-orange-500)"
+        accentColor="var(--color-brand-magenta-400)"
+      />
       <SectionMarker sections={SECTIONS} />
       <main id="main-content" className="w-full flex flex-col relative z-10">
         <Hero />

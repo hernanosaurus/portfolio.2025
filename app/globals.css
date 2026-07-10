@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+html,
+body {
+  background-color: #09090b;
+  color: #f4f4f5;
+}
+
 @theme {
   --font-display: var(--font-space-grotesk);
 
@@ -189,6 +195,45 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+  }
+
+  .chrome-border-hover {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid rgb(39 39 42);
+    transition:
+      border-color 300ms,
+      box-shadow 300ms;
+  }
+
+  .chrome-border-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-chrome);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .chrome-border-hover:hover,
+  .chrome-border-hover:focus-within,
+  .chrome-border-hover.is-default-active {
+    border-color: transparent;
+    box-shadow: 0 0 20px -4px rgba(255, 46, 159, 0.35);
+  }
+
+  .chrome-border-hover:hover::before,
+  .chrome-border-hover:focus-within::before,
+  .chrome-border-hover.is-default-active::before {
+    opacity: 1;
   }
 
   .marquee-track {
