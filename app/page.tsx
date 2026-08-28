@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { projects } from './data/projects';
+import { resolvedProjects } from './data/projects';
 import { skills } from './data/skills';
 import Hero from './components/sections/Hero';
 import Projects from './components/sections/Projects';
@@ -30,7 +30,7 @@ export default function Home() {
       <SectionMarker sections={SECTIONS} />
       <main id="main-content" className="w-full flex flex-col relative z-10">
         <Hero />
-        <Projects projects={projects} />
+        <Projects projects={resolvedProjects} />
         <Skills skills={skills} />
         <div className="mx-auto w-full max-w-3xl px-4 md:px-6">
           <motion.footer

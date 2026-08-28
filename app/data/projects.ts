@@ -13,11 +13,20 @@ export enum MobilePlatform {
   iOS = 'iOS',
 }
 
+// Generic overrides: values swapped in when NEXT_PUBLIC_PROJECTS_MODE='generic'.
+// `link: null` explicitly strips the link; omit a field to keep the detailed value.
+export interface GenericOverride {
+  name?: string;
+  description?: string;
+  link?: string | null;
+}
+
 export interface RelatedProduct {
   name: string;
   link?: string;
   description: string;
   platform?: Platform;
+  generic?: GenericOverride;
 }
 
 export interface Product {
@@ -27,6 +36,7 @@ export interface Product {
   tech?: TechEnum[];
   related?: RelatedProduct[];
   platform?: Platform;
+  generic?: GenericOverride;
 }
 
 export interface Project {
@@ -36,6 +46,7 @@ export interface Project {
   link?: string;
   products?: Product[];
   platform?: Platform;
+  generic?: GenericOverride;
 }
 
 export const projects: Project[] = [
@@ -44,6 +55,12 @@ export const projects: Project[] = [
     description:
       'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
     link: 'https://cctalent.global/en/',
+    generic: {
+      name: 'Sports & Fan Engagement Company',
+      description:
+        'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
+      link: null,
+    },
     products: [
       {
         name: 'Mee met Oranje App',
@@ -52,6 +69,12 @@ export const projects: Project[] = [
         link: 'https://play.google.com/store/apps/details?id=com.meemetoranje.app',
         tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
         platform: Platform.Mobile,
+        generic: {
+          name: 'Sports Fan Mobile App',
+          description:
+            'Developed responsive authentication flows with social login and guest access, built real-time data visualizations for live games, scores, match schedules, and news features, implemented a push notification system to drive timely user engagement, and optimized cross-platform performance across iOS and Android.',
+          link: null,
+        },
       },
       {
         name: 'Football Transfers App',
@@ -60,6 +83,12 @@ export const projects: Project[] = [
         link: 'https://play.google.com/store/apps/details?id=com.footballtransfers.app',
         tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
         platform: Platform.Mobile,
+        generic: {
+          name: 'Sports Analytics Mobile App',
+          description:
+            'Developed interactive screens and real-time data visualizations for player transfers, valuations, and rumours. Implemented notification flows and optimized for performance.',
+          link: null,
+        },
       },
       {
         name: 'FCUpdate App',
@@ -68,6 +97,12 @@ export const projects: Project[] = [
         link: 'https://play.google.com/store/apps/details?id=com.fcupdate.app',
         tech: [LibrariesAndFrameworks.ReactNative, LibrariesAndFrameworks.Expo, Coding.TypeScript, Tool.OneSignal, MobilePlatform.Android, MobilePlatform.iOS],
         platform: Platform.Mobile,
+        generic: {
+          name: 'Live Sports News Mobile App',
+          description:
+            'Developed a mobile companion to a sports news portal, delivering live match updates and push notifications. Built with a shared React Native codebase for iOS and Android.',
+          link: null,
+        },
       },
       {
         name: 'Mee met Oranje',
@@ -76,6 +111,12 @@ export const projects: Project[] = [
         link: 'https://www.meemetoranje.nl/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
+        generic: {
+          name: 'Fan Community Website',
+          description:
+            'Led frontend development, translating Figma designs into a polished website for a national sports fan community. Integrated CMS for dynamic content and optimized for performance.',
+          link: null,
+        },
       },
       {
         name: 'Anfield Watch',
@@ -84,6 +125,12 @@ export const projects: Project[] = [
         link: 'https://www.anfieldwatch.co.uk/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
+        generic: {
+          name: 'Club Fan Website',
+          description:
+            'Built responsive UI and smooth user interactions for live content and community features on a football club fan platform. Focused on performance and accessibility.',
+          link: null,
+        },
       },
       {
         name: 'FCUpdate',
@@ -92,6 +139,12 @@ export const projects: Project[] = [
         link: 'https://www.fcupdate.nl/',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
+        generic: {
+          name: 'Sports News Portal',
+          description:
+            'Developed and maintained a high-traffic sports news portal, delivering live match updates, player injuries, results, and commentary. Shipped in multiple localized versions.',
+          link: null,
+        },
       },
       {
         name: 'Football Transfers',
@@ -100,6 +153,12 @@ export const projects: Project[] = [
         link: 'https://www.footballtransfers.com/en',
         tech: [Coding.HTML5, Coding.JavaScript, Coding.SCSS, Coding.CSS3, LibrariesAndFrameworks.Bootstrap, Coding.PHP, LibrariesAndFrameworks.Laravel],
         platform: Platform.Both,
+        generic: {
+          name: 'Sports Analytics Platform',
+          description:
+            'Enhanced a sports analytics platform with real-time valuation models, transfer rumours, and interactive dashboards. Shipped in multiple localized versions.',
+          link: null,
+        },
       },
       {
         name: 'Real-time Embeddable Content Feed',
@@ -217,3 +276,40 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+export type ProjectsMode = 'detailed' | 'generic';
+
+// Read at import time so the resolved list is a stable module-level value.
+// Flip with NEXT_PUBLIC_PROJECTS_MODE=generic in .env.local (or Vercel env) and rebuild.
+export const projectsMode: ProjectsMode =
+  process.env.NEXT_PUBLIC_PROJECTS_MODE === 'generic' ? 'generic' : 'detailed';
+
+function applyOverride<T extends { name: string; description: string; link?: string; generic?: GenericOverride }>(
+  item: T,
+): T {
+  if (!item.generic) return item;
+  const { name, description, link } = item.generic;
+  const next = { ...item };
+  if (name !== undefined) next.name = name;
+  if (description !== undefined) next.description = description;
+  if (link === null) delete next.link;
+  else if (link !== undefined) next.link = link;
+  return next;
+}
+
+function applyGenericToProject(project: Project): Project {
+  const base = applyOverride(project);
+  if (base.products) {
+    base.products = base.products.map((product) => {
+      const nextProduct = applyOverride(product);
+      if (nextProduct.related) {
+        nextProduct.related = nextProduct.related.map((r) => applyOverride(r));
+      }
+      return nextProduct;
+    });
+  }
+  return base;
+}
+
+export const resolvedProjects: Project[] =
+  projectsMode === 'generic' ? projects.map(applyGenericToProject) : projects;
