@@ -151,14 +151,20 @@ function MarqueeRow({
     if (!el || !track) return;
 
     let period = 0;
+    let centered = false;
     const measure = () => {
       period = track.scrollWidth / copies;
+      // Center once, as soon as we get a real measurement. Doing this on every
+      // ResizeObserver callback would slam scrollLeft mid-animation on any
+      // subpixel layout fluctuation and make the row appear stuck.
+      if (!centered && period > 0) {
+        el.scrollLeft = period;
+        centered = true;
+      }
     };
     measure();
     const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(track);
-
-    if (period > 0) el.scrollLeft = period;
 
     let dragging = false;
     let paused = false;
