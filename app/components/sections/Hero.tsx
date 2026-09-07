@@ -226,8 +226,7 @@ export default function Hero() {
           className="font-display text-lg md:text-2xl tracking-tight text-zinc-300 mt-2"
         >
           Frontend Engineer <span className="text-zinc-600">/</span>{' '}
-          Creative Developer <span className="text-zinc-600">/</span>{' '}
-          <span className="chrome-text-cool">AI Diplomat</span>
+          Creative Developer
         </motion.p>
 
         <motion.p
