@@ -51,6 +51,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: 'Tax Reporting Platform',
+    description:
+      'Lead frontend engineer on a SaaS platform that helps accounting professionals rapidly assess multi-state tax nexus obligations for their clients. Built the end-to-end client workflow — activity intake, analysis review, and white-label PDF report generation and rendering — plus Stripe-powered checkout for single and bulk report purchases.',
+    tech: [
+      LibrariesAndFrameworks.React,
+      Coding.TypeScript,
+      LibrariesAndFrameworks.ReduxToolkit,
+      LibrariesAndFrameworks.StyledComponents,
+      LibrariesAndFrameworks.AntDesign,
+      Tool.Vite,
+    ],
+    platform: Platform.Desktop,
+  },
+  {
     name: 'CCTalent formerly CodingChiefs',
     description:
       'Built and maintained multiple products as a frontend developer, delivering responsive, interactive, and content-rich experiences. Led UI development, implemented data visualizations, notification flows, and ensured a smooth, responsive mobile experience.',
