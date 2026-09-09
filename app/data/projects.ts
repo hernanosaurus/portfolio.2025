@@ -249,18 +249,26 @@ export const projects: Project[] = [
     platform: Platform.Both,
   },
   {
-    name: 'Creator Link & Content Monetization Platform',
+    name: 'Content Creator Agency',
     description:
-      'Built a web-based platform that provides creators with a centralized hub to share links and monetize their content from a single customizable profile.',
-    tech: [LibrariesAndFrameworks.React, Coding.TypeScript, LibrariesAndFrameworks.TanStack, LibrariesAndFrameworks.CSS3, LibrariesAndFrameworks.TailwindCSS, Tool.Vite],
+      'Contributed frontend work on two products for a content creator agency — a link-in-bio monetization platform and an AI-driven creator/fan engagement platform. Delivered responsive, interactive experiences across both codebases and stacks.',
     platform: Platform.Both,
-  },
-  {
-    name: 'Creator & Fan Engagement Platform',
-    description:
-      'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
-    tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets],
-    platform: Platform.Both,
+    products: [
+      {
+        name: 'Creator Link & Content Monetization Platform',
+        description:
+          'Built a web-based platform that provides creators with a centralized hub to share links and monetize their content from a single customizable profile.',
+        tech: [LibrariesAndFrameworks.React, Coding.TypeScript, LibrariesAndFrameworks.TanStack, LibrariesAndFrameworks.CSS3, LibrariesAndFrameworks.TailwindCSS, Tool.Vite],
+        platform: Platform.Both,
+      },
+      {
+        name: 'Creator & Fan Engagement Platform',
+        description:
+          'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
+        tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets],
+        platform: Platform.Both,
+      },
+    ],
   },
   {
     name: 'Web3 Digital Asset Minting Platform',
