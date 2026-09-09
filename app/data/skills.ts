@@ -27,8 +27,10 @@ export enum LibrariesAndFrameworks {
   React = 'React',
   Redux = 'Redux',
   ReduxToolkit = 'Redux Toolkit',
-  ReactQuery = 'React Query',
+  ReactQuery = 'TanStack Query',
   ReactNative = 'React Native',
+  NextJS = 'Next.js',
+  NodeJS = 'Node.js',
   AngularJS = 'AngularJS',
   NgRx = 'NgRx',
   VueJS = 'Vue.js',
@@ -44,7 +46,6 @@ export enum LibrariesAndFrameworks {
   Laravel = 'Laravel',
   Expo = 'Expo',
   TanStack = 'TanStack',
-  Parse = 'Parse',
 }
 
 export enum Tool {
@@ -65,6 +66,10 @@ export enum Tool {
   MobileApp = 'Mobile App',
   ClaudeCode = 'Claude Code',
   GitHubCopilot = 'GitHub Copilot',
+  Jest = 'Jest',
+  ReactTestingLibrary = 'React Testing Library',
+  Cypress = 'Cypress',
+  Vercel = 'Vercel',
 }
 
 export const skills: Skills = {
@@ -74,7 +79,6 @@ export const skills: Skills = {
     Coding.CSS3,
     Coding.SCSS,
     Coding.TypeScript,
-    Coding.PHP,
   ],
   [SkillCategories.LibrariesAndFrameworks]: [
     LibrariesAndFrameworks.jQuery,
@@ -83,6 +87,8 @@ export const skills: Skills = {
     LibrariesAndFrameworks.ReduxToolkit,
     LibrariesAndFrameworks.ReactQuery,
     LibrariesAndFrameworks.ReactNative,
+    LibrariesAndFrameworks.NextJS,
+    LibrariesAndFrameworks.NodeJS,
     LibrariesAndFrameworks.AngularJS,
     LibrariesAndFrameworks.NgRx,
     LibrariesAndFrameworks.VueJS,
@@ -96,9 +102,7 @@ export const skills: Skills = {
     LibrariesAndFrameworks.MaterialUI,
     LibrariesAndFrameworks.Bootstrap,
     LibrariesAndFrameworks.Expo,
-    LibrariesAndFrameworks.Laravel,
     LibrariesAndFrameworks.TanStack,
-    LibrariesAndFrameworks.Parse,
   ],
   [SkillCategories.Tools]: [
     Tool.VSCode,
@@ -117,5 +121,9 @@ export const skills: Skills = {
     Tool.WebSockets,
     Tool.ClaudeCode,
     Tool.GitHubCopilot,
+    Tool.Jest,
+    Tool.ReactTestingLibrary,
+    Tool.Cypress,
+    Tool.Vercel,
   ],
 };

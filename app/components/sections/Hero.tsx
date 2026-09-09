@@ -152,7 +152,7 @@ export default function Hero() {
 
         <motion.div
           {...motionProps(80, 500, shouldReduce ?? false)}
-          className="relative"
+          className="relative mt-3 md:mt-0"
           onHoverStart={() => setNameHovered(true)}
           onHoverEnd={() => setNameHovered(false)}
         >
@@ -180,7 +180,7 @@ export default function Hero() {
             }}
             onFocus={() => setNameHovered(true)}
             onBlur={() => setNameHovered(false)}
-            className="select-none absolute inset-x-0 top-1/2 -translate-y-1/2 font-display font-bold outline-text-bold leading-none tracking-tight uppercase whitespace-nowrap origin-left cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
+            className="select-none absolute inset-x-0 top-1/2 -translate-y-1/2 font-display font-bold outline-text-bold leading-none tracking-tight uppercase whitespace-normal md:whitespace-nowrap origin-left cursor-pointer focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
           >
             keyboard for hire
           </motion.a>
@@ -203,7 +203,7 @@ export default function Hero() {
             tabIndex={0}
             style={{
               pointerEvents: nameHovered ? 'none' : 'auto',
-              fontSize: 'clamp(80px, 14vw, 220px)',
+              fontSize: 'clamp(40px, 8vw, 140px)',
             }}
             className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none cursor-default origin-left focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
           >
@@ -213,7 +213,7 @@ export default function Hero() {
                   fontVariationSettings: `'wght' ${IDLE_WEIGHT}, 'wdth' ${IDLE_WIDTH}`,
                 }}
               >
-                Nani
+                Hernanosaurus
               </span>
             ) : (
               <KineticName smoothWeight={smoothWeight} smoothWidth={smoothWidth} />
@@ -254,7 +254,7 @@ export default function Hero() {
           {...motionProps(400, 450, shouldReduce ?? false)}
           className="max-w-2xl text-base md:text-xl leading-relaxed text-zinc-300 mt-6 font-sans"
         >
-          I&apos;m Nani — frontend engineer, remote-first, coffee-fueled, and here to build the better half of the web 🙂
+          I&apos;m Hernan — frontend engineer, remote-first, coffee-fueled, and here to build the better half of the web 🙂
         </motion.p>
 
         <motion.div
@@ -395,7 +395,7 @@ function KineticName({
         fontVariationSettings: `'wght' ${IDLE_WEIGHT}, 'wdth' ${IDLE_WIDTH}`,
       }}
     >
-      Nani
+      Hernanosaurus
     </span>
   );
 }
