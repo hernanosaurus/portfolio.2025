@@ -386,6 +386,32 @@ body {
   }
 }
 
+.featured-columns {
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .featured-columns {
+    column-count: 2;
+    column-gap: 1.5rem;
+  }
+}
+
+.featured-columns > * {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .featured-columns > * {
+    margin-bottom: 1.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     flex-wrap: wrap;

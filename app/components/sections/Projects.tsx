@@ -31,14 +31,10 @@ export default function Projects({ projects }: ProjectsProps) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 items-start auto-rows-min"
+            className="featured-columns"
           >
             {linkedProjects.map((project, index) => (
-              <motion.div
-                key={project.name}
-                variants={sectionItem}
-                className={featuredSpanClass(index)}
-              >
+              <motion.div key={project.name} variants={sectionItem}>
                 <Card project={project} defaultActive={index === 0} />
               </motion.div>
             ))}
@@ -65,14 +61,6 @@ export default function Projects({ projects }: ProjectsProps) {
       )}
     </section>
   );
-}
-
-function featuredSpanClass(index: number): string {
-  const pattern = index % 4;
-  if (pattern === 0) return 'md:col-span-7';
-  if (pattern === 1) return 'md:col-span-5';
-  if (pattern === 2) return 'md:col-span-5';
-  return 'md:col-span-7';
 }
 
 function SectionHeader({

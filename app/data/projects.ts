@@ -51,6 +51,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: 'Keyboard for Hire',
+    description:
+      'Personal project — solo-built an invite-only developer community: profiles, discussions, a jobs board, and anonymous salary, interview, and company reviews. Designed an anonymity model that lets developers share honest experiences without exposing their identity.',
+    tech: [
+      LibrariesAndFrameworks.NextJS,
+      Coding.TypeScript,
+      LibrariesAndFrameworks.TailwindCSS,
+      Tool.Supabase,
+      Tool.Vercel,
+    ],
+    link: 'https://keyboardforhire.dev',
+    platform: Platform.Both,
+  },
+  {
     name: 'Tax Reporting Platform',
     description:
       'Lead frontend engineer on a SaaS platform that helps accounting professionals rapidly assess multi-state tax nexus obligations for their clients. Built the end-to-end client workflow — activity intake, analysis review, and white-label PDF report generation and rendering — plus Stripe-powered checkout for single and bulk report purchases.',

@@ -70,6 +70,7 @@ export enum Tool {
   ReactTestingLibrary = 'React Testing Library',
   Cypress = 'Cypress',
   Vercel = 'Vercel',
+  Supabase = 'Supabase',
 }
 
 export const skills: Skills = {
@@ -125,5 +126,6 @@ export const skills: Skills = {
     Tool.ReactTestingLibrary,
     Tool.Cypress,
     Tool.Vercel,
+    Tool.Supabase,
   ],
 };
