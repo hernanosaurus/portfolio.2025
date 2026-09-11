@@ -7,6 +7,7 @@ import Hero from './components/sections/Hero';
 import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import CursorBlob from './components/common/CursorBlob';
+import MobileBottomBar from './components/common/MobileBottomBar';
 import SectionMarker from './components/common/SectionMarker';
 import { DURATION, EASE } from './lib/motion';
 
@@ -28,7 +29,8 @@ export default function Home() {
       </a>
       <CursorBlob />
       <SectionMarker sections={SECTIONS} />
-      <main id="main-content" className="w-full flex flex-col relative z-10">
+      <MobileBottomBar />
+      <main id="main-content" className="w-full flex flex-col relative z-10 pb-16 lg:pb-0">
         <Hero />
         <Projects projects={resolvedProjects} />
         <Skills skills={skills} />

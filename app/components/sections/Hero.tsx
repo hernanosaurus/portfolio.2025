@@ -203,7 +203,7 @@ export default function Hero() {
             tabIndex={0}
             style={{
               pointerEvents: nameHovered ? 'none' : 'auto',
-              fontSize: 'clamp(40px, 8vw, 140px)',
+              fontSize: 'clamp(48px, 10vw, 140px)',
             }}
             className="relative z-10 font-display chrome-text leading-[0.85] tracking-tight select-none cursor-default origin-left focus-visible:outline-2 focus-visible:outline-brand-cyan-400 focus-visible:outline-offset-8 rounded-xs"
           >
