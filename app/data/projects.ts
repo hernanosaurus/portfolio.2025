@@ -13,13 +13,15 @@ export enum MobilePlatform {
   iOS = 'iOS',
 }
 
-// Generic overrides: values swapped in when NEXT_PUBLIC_PROJECTS_MODE='generic'.
+// Generic overrides: values swapped in when a project's `mode` is 'generic'.
 // `link: null` explicitly strips the link; omit a field to keep the detailed value.
 export interface GenericOverride {
   name?: string;
   description?: string;
   link?: string | null;
 }
+
+export type ProjectMode = 'detailed' | 'generic';
 
 export interface RelatedProduct {
   name: string;
@@ -47,6 +49,8 @@ export interface Project {
   products?: Product[];
   platform?: Platform;
   generic?: GenericOverride;
+  hidden?: boolean;
+  mode?: ProjectMode;
 }
 
 export const projects: Project[] = [
@@ -65,9 +69,10 @@ export const projects: Project[] = [
     platform: Platform.Both,
   },
   {
-    name: 'Tax Reporting Platform',
+    name: 'NexusReport',
+    hidden: true,
     description:
-      'Lead frontend engineer on a SaaS platform that helps accounting professionals rapidly assess multi-state tax nexus obligations for their clients. Built the end-to-end client workflow — activity intake, analysis review, and white-label PDF report generation and rendering — plus Stripe-powered checkout for single and bulk report purchases.',
+      'Lead frontend engineer on NexusReport, a SaaS platform that helps accounting professionals rapidly assess multi-state tax nexus obligations for their clients. Built the end-to-end client workflow — activity intake, analysis review, and white-label PDF report generation and rendering — plus Stripe-powered checkout for single and bulk report purchases.',
     tech: [
       LibrariesAndFrameworks.React,
       Coding.TypeScript,
@@ -76,7 +81,29 @@ export const projects: Project[] = [
       LibrariesAndFrameworks.AntDesign,
       Tool.Vite,
     ],
+    link: 'https://www.nexusreport.io/',
     platform: Platform.Desktop,
+    generic: {
+      name: 'Tax Reporting Platform',
+      description:
+        'Lead frontend engineer on a SaaS platform that helps accounting professionals rapidly assess multi-state tax nexus obligations for their clients. Built the end-to-end client workflow — activity intake, analysis review, and white-label PDF report generation and rendering — plus Stripe-powered checkout for single and bulk report purchases.',
+      link: null,
+    },
+    products: [
+      {
+        name: 'NexusReport App',
+        description:
+          'The client-facing application where accounting professionals run nexus assessments, review analyses, generate white-label PDF reports, and check out via Stripe for single or bulk report purchases.',
+        link: 'https://app.nexusreport.io/',
+        platform: Platform.Desktop,
+        generic: {
+          name: 'Tax Reporting App',
+          description:
+            'The client-facing application where accounting professionals run nexus assessments, review analyses, generate white-label PDF reports, and check out via Stripe for single or bulk report purchases.',
+          link: null,
+        },
+      },
+    ],
   },
   {
     name: 'CCTalent formerly CodingChiefs',
@@ -235,90 +262,161 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: 'Education & Workshop Management Platform',
+    name: 'Ready for Kindergarten Idaho',
+    hidden: true,
     description:
-      'Joined the project after the original team moved on — picked up a large existing codebase, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for users.',
+      'Joined the project after the original team moved on — picked up a large existing codebase for Idaho\'s statewide kindergarten-readiness workshop program, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for families and administrators.',
     tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, LibrariesAndFrameworks.ReactQuery, LibrariesAndFrameworks.StyledComponents, LibrariesAndFrameworks.AntDesign, Coding.TypeScript],
+    link: 'https://readyforkindergartenidaho.org/home',
     platform: Platform.Desktop,
+    generic: {
+      name: 'Education & Workshop Management Platform',
+      description:
+        'Joined the project after the original team moved on — picked up a large existing codebase, maintained and improved the app, and added new features on top of it. I enjoyed the challenge of learning the system, cleaning things up, and making the experience even better for users.',
+      link: null,
+    },
     products: [
       {
-        name: 'Registration Portal',
+        name: 'Workshop Registration Portal',
         description:
-          'Developed user-facing interfaces for browsing, registering, and managing workshop enrolment.',
+          'Developed the public-facing site where families browse workshops, register, and manage their enrolment.',
+        link: 'https://workshop.readyforkindergartenidaho.org/workshops',
         platform: Platform.Desktop,
+        generic: {
+          name: 'Registration Portal',
+          description:
+            'Developed user-facing interfaces for browsing, registering, and managing workshop enrolment.',
+          link: null,
+        },
       },
       {
-        name: 'Admin Portal',
+        name: 'Workshop Admin Portal',
         description:
           'Built admin tools for managing workshop listings, registrations, waitlists, and attendance tracking.',
+        link: 'https://workshop.admin.readyforkindergartenidaho.org/login',
         platform: Platform.Desktop,
+        generic: {
+          name: 'Admin Portal',
+          description:
+            'Built admin tools for managing workshop listings, registrations, waitlists, and attendance tracking.',
+          link: null,
+        },
       },
     ],
   },
   {
-    name: 'Pet-Friendly Rental Management Platform',
+    name: 'OurPetPolicy',
+    hidden: true,
     description:
-      'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
+      'Built the landing page for OurPetPolicy, a platform focused on pet-friendly rental management, including pet policy and compliance features for landlords and property managers.',
     tech: [Tool.Webflow, Coding.JavaScript],
+    link: 'https://www.ourpetpolicy.com/',
     platform: Platform.Both,
+    generic: {
+      name: 'Pet-Friendly Rental Management Platform',
+      description:
+        'Built the landing page for a platform focused on pet-friendly rental management, including pet policy and compliance features.',
+      link: null,
+    },
   },
   {
     name: 'Content Creator Agency',
+    mode: 'generic',
     description:
-      'Contributed frontend work on two products for a content creator agency — a link-in-bio monetization platform and an AI-driven creator/fan engagement platform. Delivered responsive, interactive experiences across both codebases and stacks.',
+      'Contributed frontend work on two products for a content creator agency — xliink, a link-in-bio monetization platform, and wefans.ai, an AI-driven creator/fan engagement platform. Delivered responsive, interactive experiences across both codebases and stacks.',
     platform: Platform.Both,
+    generic: {
+      description:
+        'Contributed frontend work on two products for a content creator agency — a link-in-bio monetization platform and an AI-driven creator/fan engagement platform. Delivered responsive, interactive experiences across both codebases and stacks.',
+    },
     products: [
       {
-        name: 'Creator Link & Content Monetization Platform',
+        name: 'xliink',
         description:
           'Built a web-based platform that provides creators with a centralized hub to share links and monetize their content from a single customizable profile.',
         tech: [LibrariesAndFrameworks.React, Coding.TypeScript, LibrariesAndFrameworks.TanStack, LibrariesAndFrameworks.CSS3, LibrariesAndFrameworks.TailwindCSS, Tool.Vite],
+        link: 'https://xliink.com/',
         platform: Platform.Both,
+        generic: {
+          name: 'Creator Link & Content Monetization Platform',
+          description:
+            'Built a web-based platform that provides creators with a centralized hub to share links and monetize their content from a single customizable profile.',
+          link: null,
+        },
       },
       {
-        name: 'Creator & Fan Engagement Platform',
+        name: 'wefans.ai',
         description:
           'Developed frontend features for a platform enabling creators and brands to deepen fan engagement with AI-driven personalized interaction and content.',
-        tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets],
+        tech: [LibrariesAndFrameworks.EmberJS, Coding.SCSS, Tool.WebSockets, Tool.AuthorizeNet],
+        link: 'https://wefans.ai/',
         platform: Platform.Both,
+        generic: {
+          name: 'Creator & Fan Engagement Platform',
+          description:
+            'Built the monetization layer for a creator platform: subscription tiers and checkout, paid content unlocking, and creator-to-fan messaging with paid exchanges.',
+          link: null,
+        },
       },
     ],
   },
   {
-    name: 'Web3 Digital Asset Minting Platform',
+    name: 'w3bmint',
+    mode: 'generic',
     description:
-      'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for a Web3 digital asset minting platform.',
+      'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for w3bmint, a Web3 digital asset minting platform (no longer active).',
     tech: [LibrariesAndFrameworks.VueJS, LibrariesAndFrameworks.Pinia, LibrariesAndFrameworks.NestJS, LibrariesAndFrameworks.TailwindCSS, Coding.TypeScript],
     platform: Platform.Both,
+    generic: {
+      name: 'Web3 Digital Asset Minting Platform',
+      description:
+        'Implemented frontend flows for asset creation, metadata input, and real-time mint-status feedback, and contributed backend APIs and logic using NestJS for a Web3 digital asset minting platform.',
+    },
   },
   {
-    name: 'Enterprise logistics & transportation company',
+    name: 'Cognizant Softvision',
+    mode: 'generic',
     description:
-      'Contributed to multiple versions of enterprise logistics and transportation platforms, building reusable and responsive frontend components, shipment tracking, dashboards, and workflow automation features.',
+      'As part of Cognizant Softvision, contributed to an enterprise transportation management platform for an external client — building reusable and responsive frontend components, shipment tracking, dashboards, and workflow automation features.',
+    link: 'https://www.cognizant.com/',
     platform: Platform.Desktop,
+    generic: {
+      name: 'Enterprise logistics & transportation company',
+      description:
+        'Contributed to an enterprise transportation management platform, building reusable and responsive frontend components, shipment tracking, dashboards, and workflow automation features.',
+      link: null,
+    },
     products: [
       {
-        name: 'Enterprise Transportation Management Platform',
+        name: 'Beon Shipper',
         description: 'Contributed to developing shipment tracking, analytics dashboards, and workflow features. Built modular UI components and optimized data-driven views for performance and maintainability.',
-        tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.SCSS, Coding.TypeScript],
-        platform: Platform.Desktop,
-      },
-      {
-        name: 'Shipping & Order Management Platform',
-        description: 'Helped build core features like shipment creation, tracking, and order management. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
         tech: [LibrariesAndFrameworks.AngularJS, LibrariesAndFrameworks.NgRx, LibrariesAndFrameworks.Bootstrap, Coding.TypeScript],
+        link: 'https://beonshipper.gobeon.com/',
         platform: Platform.Desktop,
+        generic: {
+          name: 'Enterprise Transportation Management Platform',
+          description: 'Contributed to developing shipment tracking, analytics dashboards, and workflow features. Built modular UI components and optimized data-driven views for performance and maintainability.',
+          link: null,
+        },
       },
     ],
   },
+  {
+    name: 'SwanLeap',
+    mode: 'generic',
+    description:
+      'As an independent contractor, helped build core features like shipment creation, tracking, and order management on SwanLeap\'s shipping and order management platform. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
+    tech: [LibrariesAndFrameworks.React, LibrariesAndFrameworks.Redux, Coding.SCSS, Coding.TypeScript],
+    link: 'https://app.swanleap.com/',
+    platform: Platform.Desktop,
+    generic: {
+      name: 'Shipping & Order Management Platform',
+      description:
+        'As an independent contractor, helped build core features like shipment creation, tracking, and order management. Collaborated with the design and backend teams to deliver a smooth, desktop-first user experience and maintain clean, scalable frontend code.',
+      link: null,
+    },
+  },
 ];
-
-export type ProjectsMode = 'detailed' | 'generic';
-
-// Read at import time so the resolved list is a stable module-level value.
-// Flip with NEXT_PUBLIC_PROJECTS_MODE=generic in .env.local (or Vercel env) and rebuild.
-export const projectsMode: ProjectsMode =
-  process.env.NEXT_PUBLIC_PROJECTS_MODE === 'generic' ? 'generic' : 'detailed';
 
 function applyOverride<T extends { name: string; description: string; link?: string; generic?: GenericOverride }>(
   item: T,
@@ -347,5 +445,6 @@ function applyGenericToProject(project: Project): Project {
   return base;
 }
 
-export const resolvedProjects: Project[] =
-  projectsMode === 'generic' ? projects.map(applyGenericToProject) : projects;
+export const resolvedProjects: Project[] = projects
+  .filter((p) => !p.hidden)
+  .map((p) => (p.mode === 'generic' ? applyGenericToProject(p) : p));

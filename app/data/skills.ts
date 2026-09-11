@@ -71,6 +71,7 @@ export enum Tool {
   Cypress = 'Cypress',
   Vercel = 'Vercel',
   Supabase = 'Supabase',
+  AuthorizeNet = 'Authorize.Net',
 }
 
 export const skills: Skills = {
@@ -127,5 +128,6 @@ export const skills: Skills = {
     Tool.Cypress,
     Tool.Vercel,
     Tool.Supabase,
+    Tool.AuthorizeNet,
   ],
 };
